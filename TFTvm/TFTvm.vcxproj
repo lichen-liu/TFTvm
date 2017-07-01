@@ -114,9 +114,10 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExecutableAction.h" />
+    <ClInclude Include="TFT_ARCH_InstructionsActions.h" />
     <ClInclude Include="TFT_ARCH.h" />
     <ClInclude Include="InstructionAction.h" />
-    <ClInclude Include="InstructionExecutationStages.h" />
+    <ClInclude Include="TFT_ARCH_InstructionExecutationStages.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Processor.h" />
   </ItemGroup>
@@ -125,7 +126,8 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="ExecutableAction.cpp" />
     <ClCompile Include="InstructionAction.cpp" />
-    <ClCompile Include="InstructionExecutationStages.cpp" />
+    <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp" />
+    <ClCompile Include="TFT_ARCH_InstructionsActions.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Processor.cpp" />
   </ItemGroup>

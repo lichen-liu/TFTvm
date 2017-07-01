@@ -29,10 +29,13 @@
     <ClInclude Include="Memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InstructionExecutationStages.h">
+    <ClInclude Include="TFT_ARCH.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TFT_ARCH.h">
+    <ClInclude Include="TFT_ARCH_InstructionExecutationStages.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TFT_ARCH_InstructionsActions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -55,7 +58,10 @@
     <ClCompile Include="Memory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InstructionExecutationStages.cpp">
+    <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TFT_ARCH_InstructionsActions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

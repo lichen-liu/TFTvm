@@ -4,7 +4,7 @@
 
 
 /*
- * This abstract class defines the architecture-specific instruction executation stages
+ * This abstract class defines the interface of architecture-specific instruction executation stages
  * for TFT Architecture.
  */
 namespace TFT_ARCH {
