@@ -1,40 +1,31 @@
 #pragma once
 #include <memory>
-#include <vector>
+
+#include "MACHINE.h"
 
 
+/*
+ * This class implements the most minimal interface of a memory.
+ * This memory is implemented as a byte array. All operations at word
+ * level should be handled at a higher level.
+ *
+ * DONE
+ */
 namespace MACHINE {
-    template <typename WORD>
     class Memory
     {
     public:
-        /*
-         * Little Endian only makes sense when isByteAddressable==true.
-         * If WORD is not a multiple of 1-byte, I don't know whether it works.
-         */
-        Memory(WORD memorySizeInWords, bool isByteAddressable = true, bool isLittleEndian = true) :m_impl(new IMPL) {
-            m_impl->wordSizeInBytes = sizeof(WORD);
-            m_impl->memorySizeInWords = memorySizeInWords;
-            m_impl->memorySizeInBytes = (m_impl->wordSizeInBytes) * (m_impl->memorySizeInWords);
-            m_impl->isByteAddressable = isByteAddressable;
-            m_impl->isLittleEndian = isLittleEndian;
-            m_impl->word_array.resize(m_impl->memorySizeInWords, static_cast < WORD> 0);
-        }
+        Memory(std::size_t memorySize = 0);
+        virtual ~Memory() = default;
 
-        virtual ~Memory() {}
+        std::size_t getSize()const;
+
+        byte_t read(std::size_t byteAddress)const;
+        void write(std::size_t byteAddress, byte_t value)const;
 
     private:
 
-        typedef struct {
-            std::size_t wordSizeInBytes;
-            WORD memorySizeInWords;
-            WORD memorySizeInBytes;
-            bool isByteAddressable;
-            bool isLittleEndian;
-
-            std::vector<WORD> word_array;
-        }IMPL;
-
+        struct IMPL;
         std::unique_ptr<IMPL> m_impl;
     };
 }

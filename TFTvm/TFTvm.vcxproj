@@ -114,6 +114,7 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExecutableAction.h" />
+    <ClInclude Include="MACHINE.h" />
     <ClInclude Include="TFT_ARCH_InstructionsActions.h" />
     <ClInclude Include="TFT_ARCH.h" />
     <ClInclude Include="InstructionAction.h" />

@@ -38,6 +38,9 @@
     <ClInclude Include="TFT_ARCH_InstructionsActions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MACHINE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp">

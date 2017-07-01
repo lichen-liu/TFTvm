@@ -1,6 +1,8 @@
 #pragma once
-#include <cstdint>
 
+
+/*
+ * All TFT Architecture dependent parameters are defined here.
+ */
 namespace TFT_ARCH {
-    using word_t = uint16_t; 
 }
