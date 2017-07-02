@@ -16,8 +16,8 @@ namespace ACTION {
         public ExecutableAction, public InstructionExecutationStages
     {
     public:
-        InstructionAction() = default;
-        virtual ~InstructionAction() = 0;
+        InstructionAction() {}
+        virtual ~InstructionAction() {}
 
         /*
          * Architecture-specific instruction executation stages

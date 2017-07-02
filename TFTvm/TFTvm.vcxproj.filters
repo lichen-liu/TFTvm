@@ -85,5 +85,8 @@
     <ClCompile Include="TFT_ARCH_InstructionsActions.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

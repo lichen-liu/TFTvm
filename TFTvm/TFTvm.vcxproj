@@ -131,6 +131,7 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="ExecutableAction.cpp" />
     <ClCompile Include="InstructionAction.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp" />
     <ClCompile Include="TFT_ARCH_InstructionsActions.cpp" />
     <ClCompile Include="Memory.cpp" />

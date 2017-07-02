@@ -10,8 +10,8 @@ namespace TFT_ARCH {
     class InstructionExecutationStages
     {
     public:
-        InstructionExecutationStages() = default;
-        virtual ~InstructionExecutationStages() = 0;
+        InstructionExecutationStages() {}
+        virtual ~InstructionExecutationStages() {}
 
         virtual bool cycle0(MACHINE::Engine& engine) const = 0;
         virtual bool cycle1(MACHINE::Engine& engine) const = 0;

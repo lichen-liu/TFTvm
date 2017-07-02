@@ -12,7 +12,7 @@ namespace ACTION {
         public Action
     {
     public:
-        ExecutableAction() = default;
-        virtual ~ExecutableAction() = 0;
+        ExecutableAction() {}
+        virtual ~ExecutableAction() {}
     };
 }

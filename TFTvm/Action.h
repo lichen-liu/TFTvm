@@ -10,7 +10,7 @@ namespace ACTION {
     class Action
     {
     public:
-        Action() = default;
-        virtual ~Action() = 0;
+        Action() {}
+        virtual ~Action() {}
     };
 }
