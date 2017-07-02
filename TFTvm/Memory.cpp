@@ -6,6 +6,7 @@
 
 
 namespace MACHINE {
+
     struct Memory::IMPL {
         std::size_t memorySize;
         std::unique_ptr<byte_t[]> memory;
@@ -15,6 +16,10 @@ namespace MACHINE {
     {
         m_impl->memorySize = memorySize;
         m_impl->memory.reset(new byte_t[memorySize]);
+    }
+
+    Memory::~Memory()
+    {
     }
 
     std::size_t Memory::getSize() const
@@ -28,9 +33,21 @@ namespace MACHINE {
         return m_impl->memory[byteAddress];
     }
 
-    void Memory::write(size_t byteAddress, byte_t value) const
+    void Memory::write(size_t byteAddress, byte_t value)
     {
         assert(byteAddress < m_impl->memorySize);
         m_impl->memory[byteAddress] = value;
+    }
+
+    byte_t & Memory::operator[](std::size_t byteAddress)
+    {
+        assert(byteAddress < m_impl->memorySize);
+        return m_impl->memory[byteAddress];
+    }
+
+    const byte_t & Memory::operator[](std::size_t byteAddress) const
+    {
+        assert(byteAddress < m_impl->memorySize);
+        return m_impl->memory[byteAddress];
     }
 }
