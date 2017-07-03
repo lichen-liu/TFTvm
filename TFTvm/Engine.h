@@ -8,6 +8,8 @@
  * This class provides the basic atomic behaviours of the machine.
  * Since this Engine needs to be generic enough to be able to adapt to a variety of architectures,
  * it is deigned to only supports a minimal sets of architecture-independent atomic operations.
+ *
+ * DONE
  */
 namespace MACHINE {
 
