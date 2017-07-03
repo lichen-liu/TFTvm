@@ -118,6 +118,7 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExecutableAction.h" />
+    <ClInclude Include="TFT_ARCH_Machine.h" />
     <ClInclude Include="TuringMachine.h" />
     <ClInclude Include="TURING_MACHINE.h" />
     <ClInclude Include="TFT_ARCH_InstructionsActions.h" />
@@ -133,6 +134,7 @@
     <ClCompile Include="ExecutableAction.cpp" />
     <ClCompile Include="InstructionAction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TFT_ARCH_Machine.cpp" />
     <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp" />
     <ClCompile Include="TFT_ARCH_InstructionsActions.cpp" />
     <ClCompile Include="Memory.cpp" />

@@ -62,6 +62,9 @@
     <ClInclude Include="TuringMachine.h">
       <Filter>Header Files\TURING_MACHINE</Filter>
     </ClInclude>
+    <ClInclude Include="TFT_ARCH_Machine.h">
+      <Filter>Header Files\TFT_ARCH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="TuringMachine.cpp">
       <Filter>Source Files\TURING_MACHINE</Filter>
+    </ClCompile>
+    <ClCompile Include="TFT_ARCH_Machine.cpp">
+      <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

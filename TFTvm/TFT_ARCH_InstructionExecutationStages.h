@@ -13,9 +13,6 @@ namespace TFT_ARCH {
     class InstructionExecutationStages
     {
     public:
-        InstructionExecutationStages() {}
-        virtual ~InstructionExecutationStages() {}
-
         virtual bool cycle0(TURING_MACHINE::Engine& engine) const = 0;
         virtual bool cycle1(TURING_MACHINE::Engine& engine) const = 0;
         virtual bool cycle2(TURING_MACHINE::Engine& engine) const = 0;
