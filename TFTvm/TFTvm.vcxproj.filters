@@ -59,6 +59,9 @@
     <ClInclude Include="TURING_MACHINE.h">
       <Filter>Header Files\TURING_MACHINE</Filter>
     </ClInclude>
+    <ClInclude Include="TuringMachine.h">
+      <Filter>Header Files\TURING_MACHINE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -87,6 +90,9 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TuringMachine.cpp">
+      <Filter>Source Files\TURING_MACHINE</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

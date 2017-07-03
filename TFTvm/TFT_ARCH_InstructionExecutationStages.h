@@ -5,6 +5,9 @@
 /*
  * This abstract class defines the interface of architecture-specific instruction executation stages
  * for TFT Architecture.
+ *
+ * InstructionExecutationStages = 0
+ *
  */
 namespace TFT_ARCH {
     class InstructionExecutationStages

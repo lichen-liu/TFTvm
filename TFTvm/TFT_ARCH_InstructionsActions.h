@@ -6,6 +6,11 @@
 /*
 * These sets of InstructionAction model the executation behaviour of instructions on
 * the TFT Architecture.
+*
+* ACTION::InstructionAction<InstructionExecutationStages> = 0
+* |
+* xxx_InstructionAction
+*
 */
 namespace TFT_ARCH {
     using TFT_ARCH_InstructionAction = ACTION::InstructionAction<InstructionExecutationStages>;

@@ -118,6 +118,7 @@
     <ClInclude Include="Action.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="ExecutableAction.h" />
+    <ClInclude Include="TuringMachine.h" />
     <ClInclude Include="TURING_MACHINE.h" />
     <ClInclude Include="TFT_ARCH_InstructionsActions.h" />
     <ClInclude Include="TFT_ARCH.h" />
@@ -136,6 +137,7 @@
     <ClCompile Include="TFT_ARCH_InstructionsActions.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Processor.cpp" />
+    <ClCompile Include="TuringMachine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
