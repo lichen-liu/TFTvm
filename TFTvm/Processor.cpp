@@ -4,7 +4,7 @@
 #include <vector>
 
 
-namespace MACHINE {
+namespace TURING_MACHINE {
     using RegisterFile = std::vector<Processor::Register>;
 
     struct Processor::IMPL {

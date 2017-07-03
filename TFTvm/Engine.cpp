@@ -2,12 +2,12 @@
 
 #include <cassert>
 
-#include "MACHINE.h"
+#include "TURING_MACHINE.h"
 #include "Processor.h"
 #include "Memory.h"
 
 
-namespace MACHINE {
+namespace TURING_MACHINE {
 
     struct Engine::IMPL {
         // Physical Components
@@ -66,25 +66,25 @@ namespace MACHINE {
 
     const word_t & Engine::getPublicRegisterContent(std::size_t idx) const
     {
-        // implicit cast register to register content
+        // implicitly cast register to register content
         return m_impl->processor.getPublicRegister(idx);
     }
 
     const word_t & Engine::getPrivateRegisterContent(std::size_t idx) const
     {
-        // implicit cast register to register content
+        // implicitly cast register to register content
         return m_impl->processor.getPrivateRegister(idx);
     }
 
     void Engine::setPublicRegisterContent(std::size_t idx, const word_t & regContent)
     {
-        // implicit cast register content to register
+        // implicitly cast register content to register
         m_impl->processor.setPublicRegister(idx, regContent);
     }
 
     void Engine::setPrivateRegisterContent(std::size_t idx, const word_t & regContent)
     {
-        // implicit cast register content to register
+        // implicitly cast register content to register
         m_impl->processor.setPrivateRegister(idx, regContent);
     }
 

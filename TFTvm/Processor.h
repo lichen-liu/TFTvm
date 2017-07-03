@@ -2,7 +2,7 @@
 #include <memory>
 #include <vector>
 
-#include "MACHINE.h"
+#include "TURING_MACHINE.h"
 
 
 /*
@@ -31,7 +31,7 @@
  *
  * DONE
  */
-namespace MACHINE {
+namespace TURING_MACHINE {
     class Processor
     {
     public:

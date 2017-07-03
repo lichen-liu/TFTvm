@@ -2,10 +2,10 @@
 
 #include <memory>
 #include <cassert>
-#include "MACHINE.h"
+#include "TURING_MACHINE.h"
 
 
-namespace MACHINE {
+namespace TURING_MACHINE {
 
     struct Memory::IMPL {
         std::size_t memorySize;

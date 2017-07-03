@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-#include "MACHINE.h"
+#include "TURING_MACHINE.h"
 
 
 /*
@@ -26,7 +26,7 @@
  *
  * DONE
  */
-namespace MACHINE {
+namespace TURING_MACHINE {
     class Memory
     {
     public:

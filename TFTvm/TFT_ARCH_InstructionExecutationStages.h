@@ -13,12 +13,12 @@ namespace TFT_ARCH {
         InstructionExecutationStages() {}
         virtual ~InstructionExecutationStages() {}
 
-        virtual bool cycle0(MACHINE::Engine& engine) const = 0;
-        virtual bool cycle1(MACHINE::Engine& engine) const = 0;
-        virtual bool cycle2(MACHINE::Engine& engine) const = 0;
-        virtual bool cycle3(MACHINE::Engine& engine) const = 0;
-        virtual bool cycle4(MACHINE::Engine& engine) const = 0;
-        virtual bool cycle5(MACHINE::Engine& engine) const = 0;
-        virtual bool cycle6(MACHINE::Engine& engine) const = 0;
+        virtual bool cycle0(TURING_MACHINE::Engine& engine) const = 0;
+        virtual bool cycle1(TURING_MACHINE::Engine& engine) const = 0;
+        virtual bool cycle2(TURING_MACHINE::Engine& engine) const = 0;
+        virtual bool cycle3(TURING_MACHINE::Engine& engine) const = 0;
+        virtual bool cycle4(TURING_MACHINE::Engine& engine) const = 0;
+        virtual bool cycle5(TURING_MACHINE::Engine& engine) const = 0;
+        virtual bool cycle6(TURING_MACHINE::Engine& engine) const = 0;
     };
 }

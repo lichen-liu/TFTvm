@@ -1,14 +1,14 @@
 #include <iostream>
 
-#include "MACHINE.h"
+#include "TURING_MACHINE.h"
 #include "Engine.h"
 
 
 int main(void)
 {
-    MACHINE::Engine engine(2, 8, 3, 1024 * 1024);
+    TURING_MACHINE::Engine engine(2, 8, 3, 1024 * 1024);
 
-    for (MACHINE::byte_t i = 0; i < 100; i++)
+    for (TURING_MACHINE::byte_t i = 0; i < 100; i++)
     {
         engine.writeByte(i, i);
     }

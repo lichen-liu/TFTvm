@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace MACHINE {
+namespace TURING_MACHINE {
     using byte_t = uint8_t;
 
     /* Register Layout
