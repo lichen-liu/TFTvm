@@ -15,8 +15,12 @@ int main(void)
 
     std::cout << "MEM[20]=" << (unsigned int)engine.readByte(20) << std::endl;
     std::cout << "MEM[25]=" << (unsigned int)engine.readByte(25) << std::endl;
+
     
     // This is Ruixin Bao 's first test
+
+	  // Useless comment, JYC
+  
 
     return EXIT_SUCCESS;
 }
