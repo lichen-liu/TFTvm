@@ -1,19 +1,19 @@
 #pragma once
 #include "InstructionAction.h"
-#include "TFT_ARCH_InstructionExecutationStages.h"
+#include "TFT_ARCH_InstrExecRequirement.h"
 
 
 /*
 * These sets of InstructionAction model the executation behaviour of instructions on
 * the TFT Architecture.
 *
-* ACTION::InstructionAction<InstructionExecutationStages> = 0
+* ACTION::InstructionAction<InstrExecRequirement> = 0
 * |
 * xxx_InstructionAction
 *
 */
 namespace TFT_ARCH {
-    using TFT_ARCH_InstructionAction = ACTION::InstructionAction<InstructionExecutationStages>;
+    using TFT_ARCH_InstructionAction = ACTION::InstructionAction<InstrExecRequirement>;
 
 
     class MV_InstructionAction :

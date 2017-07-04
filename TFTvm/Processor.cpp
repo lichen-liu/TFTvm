@@ -74,4 +74,20 @@ namespace TURING_MACHINE {
         assert(reg.size() == m_impl->wordSizeInBytes);
         m_impl->privateRF[idx] = reg;
     }
+
+    void Processor::resetPublicRegisters()
+    {
+        m_impl->publicRF.clear();
+    }
+
+    void Processor::resetPrivateRegisters()
+    {
+        m_impl->privateRF.clear();
+    }
+
+    void Processor::resetRegisters()
+    {
+        m_impl->publicRF.clear();
+        m_impl->privateRF.clear();
+    }
 }

@@ -124,18 +124,23 @@
     <ClInclude Include="TFT_ARCH_InstructionsActions.h" />
     <ClInclude Include="TFT_ARCH.h" />
     <ClInclude Include="InstructionAction.h" />
-    <ClInclude Include="TFT_ARCH_InstructionExecutationStages.h" />
+    <ClInclude Include="TFT_ARCH_InstrExecRequirement.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Processor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
-    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Engine.tpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="ExecutableAction.cpp" />
     <ClCompile Include="InstructionAction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TFT_ARCH_Machine.cpp" />
-    <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp" />
+    <ClCompile Include="TFT_ARCH_InstrExecRequirement.cpp" />
     <ClCompile Include="TFT_ARCH_InstructionsActions.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="Processor.cpp" />

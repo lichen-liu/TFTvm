@@ -51,6 +51,11 @@ namespace TURING_MACHINE {
 
         void setPublicRegister(std::size_t idx, const Register& reg);
         void setPrivateRegister(std::size_t idx, const Register& reg);
+
+        void resetPublicRegisters();
+        void resetPrivateRegisters();
+        void resetRegisters();
+
     private:
 
         struct IMPL;

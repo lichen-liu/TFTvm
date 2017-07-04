@@ -7,28 +7,28 @@
  * This abstract class is the interface for action performed by instructions on
  * the Actionable~TuringMachine.
  *
- * template<typename InstructionExecutationStages> is an interface that defines the
- * instruction executation stages according to a spcific architecture.
+ * template<typename InstrExecRequirement> is an interface that defines the
+ * instruction executation requirement according to a spcific architecture.
  *
  *  Action = 0
  *  |
- *  ExecutableAction = 0                                   <InstructionExecutationStages> => 0
- *  |                                                      |
- *  InstructionAction<InstructionExecutationStages> = 0 ----
+ *  ExecutableAction = 0                            <InstrExecRequirement>
+ *  |                                               |
+ *  InstructionAction<InstrExecRequirement> = 0 ----
  *
  */
 namespace ACTION {
-    template<typename InstructionExecutationStages>
+    template<typename InstrExecRequirement>
     class InstructionAction :
-        public ExecutableAction, public InstructionExecutationStages
+        public ExecutableAction, public InstrExecRequirement
     {
     public:
         InstructionAction() {}
         virtual ~InstructionAction() {}
 
         /*
-         * Architecture-specific instruction executation stages
-         * declared in template<typename InstructionExecutationStages>
+         * Architecture-specific instruction executation requirement
+         * declared in template<typename InstrExecRequirement>
          */
     };
 }

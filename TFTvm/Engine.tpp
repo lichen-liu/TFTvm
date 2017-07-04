@@ -7,9 +7,13 @@
 #include "Memory.h"
 
 
+/*
+ * Class Template definition.
+ * Do not compile this file.
+ */
 namespace TURING_MACHINE {
-
-    struct Engine::IMPL {
+    template <typename InstrExecRequirement>
+    struct Engine<InstrExecRequirement>::IMPL {
         // Physical Components
         Processor processor;
         Memory memory;
@@ -32,7 +36,8 @@ namespace TURING_MACHINE {
         IMPL() = delete;
     };
 
-    Engine::Engine(
+    template <typename InstrExecRequirement>
+    Engine<InstrExecRequirement>::Engine(
         // Architecture-Related Settings
         std::size_t wordSizeInBytes,
         // Processor-Related
@@ -45,65 +50,95 @@ namespace TURING_MACHINE {
 
     }
 
-    Engine::~Engine()
+    template <typename InstrExecRequirement>
+    Engine<InstrExecRequirement>::~Engine()
     {
     }
 
-    std::size_t Engine::getWordSizeInBytes() const
+    template <typename InstrExecRequirement>
+    std::size_t Engine<InstrExecRequirement>::getWordSizeInBytes() const
     {
         return m_impl->wordSizeInBytes;
     }
 
-    std::size_t Engine::getNumPublicRegisters() const
+    template <typename InstrExecRequirement>
+    std::size_t Engine<InstrExecRequirement>::getNumPublicRegisters() const
     {
         return m_impl->processor.getNumPublicRegisters();
     }
 
-    std::size_t Engine::getNumPrivateRegisters() const
+    template <typename InstrExecRequirement>
+    std::size_t Engine<InstrExecRequirement>::getNumPrivateRegisters() const
     {
         return m_impl->processor.getNumPrivateRegisters();
     }
 
-    const word_t & Engine::getPublicRegisterContent(std::size_t idx) const
+    template <typename InstrExecRequirement>
+    const word_t & Engine<InstrExecRequirement>::getPublicRegisterContent(std::size_t idx) const
     {
         // implicitly cast register to register content
         return m_impl->processor.getPublicRegister(idx);
     }
 
-    const word_t & Engine::getPrivateRegisterContent(std::size_t idx) const
+    template <typename InstrExecRequirement>
+    const word_t & Engine<InstrExecRequirement>::getPrivateRegisterContent(std::size_t idx) const
     {
         // implicitly cast register to register content
         return m_impl->processor.getPrivateRegister(idx);
     }
 
-    void Engine::setPublicRegisterContent(std::size_t idx, const word_t & regContent)
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::setPublicRegisterContent(std::size_t idx, const word_t & regContent)
     {
         // implicitly cast register content to register
         m_impl->processor.setPublicRegister(idx, regContent);
     }
 
-    void Engine::setPrivateRegisterContent(std::size_t idx, const word_t & regContent)
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::setPrivateRegisterContent(std::size_t idx, const word_t & regContent)
     {
         // implicitly cast register content to register
         m_impl->processor.setPrivateRegister(idx, regContent);
     }
 
-    std::size_t Engine::getMemorySizeInBytes() const
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::resetPublicRegisters()
+    {
+        m_impl->processor.resetPublicRegisters();
+    }
+
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::resetPrivateRegisters()
+    {
+        m_impl->processor.resetPrivateRegisters();
+    }
+
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::resetRegisters()
+    {
+        m_impl->processor.resetRegisters();
+    }
+
+    template <typename InstrExecRequirement>
+    std::size_t Engine<InstrExecRequirement>::getMemorySizeInBytes() const
     {
         return m_impl->memory.getSize();
     }
 
-    byte_t Engine::readByte(std::size_t byteAddress) const
+    template <typename InstrExecRequirement>
+    byte_t Engine<InstrExecRequirement>::readByte(std::size_t byteAddress) const
     {
         return m_impl->memory.read(byteAddress);
     }
 
-    void Engine::writeByte(std::size_t byteAddress, byte_t value)
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::writeByte(std::size_t byteAddress, byte_t value)
     {
         m_impl->memory.write(byteAddress, value);
     }
 
-    word_t Engine::readWord(std::size_t address, addressable_e addressable, endian_e endian) const
+    template <typename InstrExecRequirement>
+    word_t Engine<InstrExecRequirement>::readWord(std::size_t address, addressable_e addressable, endian_e endian) const
     {
         std::size_t byteAddress = 0;
 
@@ -149,7 +184,8 @@ namespace TURING_MACHINE {
         return word;
     }
 
-    void Engine::writeWord(std::size_t address, const word_t & value, addressable_e addressable, endian_e endian)
+    template <typename InstrExecRequirement>
+    void Engine<InstrExecRequirement>::writeWord(std::size_t address, const word_t & value, addressable_e addressable, endian_e endian)
     {
         assert(value.size() == m_impl->wordSizeInBytes);
 

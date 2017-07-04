@@ -50,9 +50,6 @@
     <ClInclude Include="TFT_ARCH.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
-    <ClInclude Include="TFT_ARCH_InstructionExecutationStages.h">
-      <Filter>Header Files\TFT_ARCH</Filter>
-    </ClInclude>
     <ClInclude Include="TFT_ARCH_InstructionsActions.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
@@ -65,11 +62,11 @@
     <ClInclude Include="TFT_ARCH_Machine.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
+    <ClInclude Include="TFT_ARCH_InstrExecRequirement.h">
+      <Filter>Header Files\TFT_ARCH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Source Files\TURING_MACHINE</Filter>
-    </ClCompile>
     <ClCompile Include="Memory.cpp">
       <Filter>Source Files\TURING_MACHINE</Filter>
     </ClCompile>
@@ -85,9 +82,6 @@
     <ClCompile Include="InstructionAction.cpp">
       <Filter>Source Files\ACTION</Filter>
     </ClCompile>
-    <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp">
-      <Filter>Source Files\TFT_ARCH</Filter>
-    </ClCompile>
     <ClCompile Include="TFT_ARCH_InstructionsActions.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
@@ -98,6 +92,12 @@
       <Filter>Source Files\TURING_MACHINE</Filter>
     </ClCompile>
     <ClCompile Include="TFT_ARCH_Machine.cpp">
+      <Filter>Source Files\TFT_ARCH</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.tpp">
+      <Filter>Source Files\TURING_MACHINE</Filter>
+    </ClCompile>
+    <ClCompile Include="TFT_ARCH_InstrExecRequirement.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
   </ItemGroup>
