@@ -1,7 +1,7 @@
 #pragma once
-#include <memory>
-
 #include "TURING_MACHINE.h"
+
+#include <memory>
 
 
 /*
@@ -44,6 +44,6 @@ namespace TURING_MACHINE {
     private:
 
         struct IMPL;
-        std::unique_ptr<IMPL> m_impl;
+        std::unique_ptr<IMPL> impl_;
     };
 }

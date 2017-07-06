@@ -29,75 +29,81 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Action.h">
-      <Filter>Header Files\ACTION</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine.h">
-      <Filter>Header Files\TURING_MACHINE</Filter>
-    </ClInclude>
-    <ClInclude Include="ExecutableAction.h">
-      <Filter>Header Files\ACTION</Filter>
-    </ClInclude>
-    <ClInclude Include="InstructionAction.h">
-      <Filter>Header Files\ACTION</Filter>
-    </ClInclude>
-    <ClInclude Include="Memory.h">
-      <Filter>Header Files\TURING_MACHINE</Filter>
-    </ClInclude>
-    <ClInclude Include="Processor.h">
-      <Filter>Header Files\TURING_MACHINE</Filter>
-    </ClInclude>
     <ClInclude Include="TFT_ARCH.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
-    <ClInclude Include="TFT_ARCH_InstructionsActions.h">
-      <Filter>Header Files\TFT_ARCH</Filter>
+    <ClInclude Include="word_t.h">
+      <Filter>Header Files\TURING_MACHINE</Filter>
+    </ClInclude>
+    <ClInclude Include="processor.h">
+      <Filter>Header Files\TURING_MACHINE</Filter>
+    </ClInclude>
+    <ClInclude Include="memory.h">
+      <Filter>Header Files\TURING_MACHINE</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Header Files\TURING_MACHINE</Filter>
     </ClInclude>
     <ClInclude Include="TURING_MACHINE.h">
       <Filter>Header Files\TURING_MACHINE</Filter>
     </ClInclude>
-    <ClInclude Include="TuringMachine.h">
+    <ClInclude Include="turing_machine_prototype.h">
       <Filter>Header Files\TURING_MACHINE</Filter>
     </ClInclude>
-    <ClInclude Include="TFT_ARCH_Machine.h">
+    <ClInclude Include="action.h">
+      <Filter>Header Files\ACTION</Filter>
+    </ClInclude>
+    <ClInclude Include="executable_action.h">
+      <Filter>Header Files\ACTION</Filter>
+    </ClInclude>
+    <ClInclude Include="instruction_action.h">
+      <Filter>Header Files\ACTION</Filter>
+    </ClInclude>
+    <ClInclude Include="TFT_ARCH_instr_exec_requirement.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
-    <ClInclude Include="TFT_ARCH_InstrExecRequirement.h">
+    <ClInclude Include="TFT_ARCH_instructions_actions.h">
+      <Filter>Header Files\TFT_ARCH</Filter>
+    </ClInclude>
+    <ClInclude Include="TFT_ARCH_machine.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Memory.cpp">
-      <Filter>Source Files\TURING_MACHINE</Filter>
-    </ClCompile>
-    <ClCompile Include="Processor.cpp">
-      <Filter>Source Files\TURING_MACHINE</Filter>
-    </ClCompile>
-    <ClCompile Include="Action.cpp">
-      <Filter>Source Files\ACTION</Filter>
-    </ClCompile>
-    <ClCompile Include="ExecutableAction.cpp">
-      <Filter>Source Files\ACTION</Filter>
-    </ClCompile>
-    <ClCompile Include="InstructionAction.cpp">
-      <Filter>Source Files\ACTION</Filter>
-    </ClCompile>
-    <ClCompile Include="TFT_ARCH_InstructionsActions.cpp">
-      <Filter>Source Files\TFT_ARCH</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TuringMachine.cpp">
+    <ClCompile Include="word_t.cpp">
       <Filter>Source Files\TURING_MACHINE</Filter>
     </ClCompile>
-    <ClCompile Include="TFT_ARCH_Machine.cpp">
+    <ClCompile Include="engine.tpp">
+      <Filter>Source Files\TURING_MACHINE</Filter>
+    </ClCompile>
+    <ClCompile Include="memory.cpp">
+      <Filter>Source Files\TURING_MACHINE</Filter>
+    </ClCompile>
+    <ClCompile Include="processor.cpp">
+      <Filter>Source Files\TURING_MACHINE</Filter>
+    </ClCompile>
+    <ClCompile Include="turing_machine_prototype.cpp">
+      <Filter>Source Files\TURING_MACHINE</Filter>
+    </ClCompile>
+    <ClCompile Include="action.cpp">
+      <Filter>Source Files\ACTION</Filter>
+    </ClCompile>
+    <ClCompile Include="executable_action.cpp">
+      <Filter>Source Files\ACTION</Filter>
+    </ClCompile>
+    <ClCompile Include="instruction_action.cpp">
+      <Filter>Source Files\ACTION</Filter>
+    </ClCompile>
+    <ClCompile Include="TFT_ARCH_instr_exec_requirement.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.tpp">
-      <Filter>Source Files\TURING_MACHINE</Filter>
+    <ClCompile Include="TFT_ARCH_instructions_actions.cpp">
+      <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
-    <ClCompile Include="TFT_ARCH_InstrExecRequirement.cpp">
+    <ClCompile Include="TFT_ARCH_machine.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
   </ItemGroup>

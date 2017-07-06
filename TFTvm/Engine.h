@@ -1,9 +1,11 @@
 #pragma once
+#include "TURING_MACHINE.h"
+
 #include <memory>
 
-#include "TURING_MACHINE.h"
-#include "Memory.h"
-#include "Processor.h"
+#include "memory.h"
+#include "processor.h"
+#include "word_t.h"
 
 
 /*
@@ -11,30 +13,19 @@
  * Since this Engine needs to be generic enough to be able to adapt to a variety of architectures,
  * it is deigned to only supports a minimal sets of architecture-independent atomic operations.
  *
- * template <typename InstrExecRequirement> is the interface that defines the required methods
+ * template <typename EngineRequirement> is the interface that defines the required methods
  * provided by this engine.
  *
- * <InstrExecRequirement>
+ * <EngineRequirement>
  * |
- * Engine<InstrExecRequirement>
+ * Engine<EngineRequirement>
  *
  * DONE
  */
 namespace TURING_MACHINE {
 
-    enum class endian_e {
-        little,
-        big
-    };
-
-    enum class addressable_e {
-        byte,
-        word
-    };
-
-
-    template <typename InstrExecRequirement>
-    class Engine : public InstrExecRequirement
+    template <typename EngineRequirement>
+    class Engine : public EngineRequirement
     {
     public:
         Engine(
@@ -57,8 +48,8 @@ namespace TURING_MACHINE {
         virtual std::size_t getNumPublicRegisters()const;
         virtual std::size_t getNumPrivateRegisters()const;
 
-        virtual const word_t& getPublicRegisterContent(std::size_t idx)const;
-        virtual const word_t& getPrivateRegisterContent(std::size_t idx)const;
+        virtual word_t getPublicRegisterContent(std::size_t idx)const;
+        virtual word_t getPrivateRegisterContent(std::size_t idx)const;
 
         virtual void setPublicRegisterContent(std::size_t idx, const word_t& regContent);
         virtual void setPrivateRegisterContent(std::size_t idx, const word_t& regContent);
@@ -86,9 +77,9 @@ namespace TURING_MACHINE {
     private:
 
         struct IMPL;
-        std::unique_ptr<IMPL> m_impl;
+        std::unique_ptr<IMPL> impl_;
     };
 }
 
 // Class Template requires both declaration and definition to be in the header file.
-#include "Engine.tpp"
+#include "engine.tpp"

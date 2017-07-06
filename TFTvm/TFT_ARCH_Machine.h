@@ -1,17 +1,17 @@
 #pragma once
-#include "TFT_ARCH_InstrExecRequirement.h"
-#include "TuringMachine.h"
+#include "TFT_ARCH_instr_exec_requirement.h"
+#include "turing_machine_prototype.h"
 
 
 /*
 *
-* TURING_MACHINE::TuringMachine<InstrExecRequirement> = 0
+* TURING_MACHINE::TuringMachinePrototype<InstrExecRequirement> = 0
 * |
 * Machine
 *
 */
 namespace TFT_ARCH {
-    class Machine : public TURING_MACHINE::TuringMachine<InstrExecRequirement>
+    class Machine : public TURING_MACHINE::TuringMachinePrototype<InstrExecRequirement>
     {
     public:
         Machine(std::size_t memorySizeInBytes = 0);

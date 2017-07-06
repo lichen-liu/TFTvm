@@ -1,6 +1,6 @@
 #pragma once
-#include "InstructionAction.h"
-#include "TFT_ARCH_InstrExecRequirement.h"
+#include "instruction_action.h"
+#include "TFT_ARCH_instr_exec_requirement.h"
 
 
 /*

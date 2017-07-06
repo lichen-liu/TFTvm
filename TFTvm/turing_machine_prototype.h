@@ -1,9 +1,10 @@
 #pragma once
+#include "TURING_MACHINE.h"
+
 #include <cassert>
 #include <memory>
 #include <vector>
 
-#include "TURING_MACHINE.h"
 #include "Engine.h"
 
 
@@ -19,7 +20,7 @@
 namespace TURING_MACHINE {
 
     template<typename  InstrExecRequirement>
-    class TuringMachine
+    class TuringMachinePrototype
     {
     public:
         // Finalized interface to access this Turing Machine
@@ -43,7 +44,7 @@ namespace TURING_MACHINE {
         }
 
     protected:
-        TuringMachine(
+        TuringMachinePrototype(
             std::size_t wordSizeInBytes = 2,
             std::size_t numPublicRegisters = 8,
             std::size_t numPrivateRegisters = 3,
@@ -51,10 +52,10 @@ namespace TURING_MACHINE {
             m_engine(new Engine<InstrExecRequirement>(wordSizeInBytes, numPublicRegisters, numPrivateRegisters, memorySizeInBytes)) {}
 
         // The argument engine must be dynamically allocated, its ownership is then transferred to this object
-        TuringMachine(Engine<InstrExecRequirement>* engine) :
+        TuringMachinePrototype(Engine<InstrExecRequirement>* engine) :
             m_engine(engine) {}
 
-        virtual ~TuringMachine() {}
+        virtual ~TuringMachinePrototype() {}
 
     private:
         std::unique_ptr<Engine<InstrExecRequirement>> m_engine;
