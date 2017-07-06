@@ -27,6 +27,14 @@ Mutator: setGender()
 Accessor of Class: getTelephone()
 Accessor of Data type: size()
 ## Rules
+* Use namespace at all times
 * Enum Enumerator must be scoped, either via Enum Class or Namespace
 * Accessor Function must have const
 * Mutator Function must not have const
+* #include the header file if and only if a symbol's declaration is inside that header file
+* Use forward declaration whenever possible in the header file
+* Never use "using namespace xxx" in a header file
+* The #include order is as following (in alphabetical order in each category)
+  - (Declaration file of this Implementation file)
+  - Standard Library, Standard Template Library
+  - Other
