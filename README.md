@@ -23,9 +23,9 @@ Use Camel Case in general.
 * namespace/class_a.(cpp/h/tpp)
 * Only the Namespace header file can have the same name as the namespace.
 ### Function Name
-Mutator: setGender()
-Accessor of Class: getTelephone()
-Accessor of Data type: size()
+* Mutator: setGender()
+* Accessor of Class: getTelephone()
+* Accessor of Data type: size()
 ## Rules
 * Use namespace at all times
 * Enum Enumerator must be scoped, either via Enum Class or Namespace
