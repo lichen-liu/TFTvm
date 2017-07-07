@@ -10,16 +10,16 @@
 
 /*
  *
- * template <typename InstrExecRequirement> is the interface that defines the required methods
+ * template <typename EngineRequirement> is the interface that defines the required methods
  * provided by the engine used by this machine.
  *
- * TuringMachine<InstrExecRequirement> = 0
+ * TuringMachine<EngineRequirement> = 0
  *
  * DONE
  */
 namespace TURING_MACHINE {
 
-    template<typename  InstrExecRequirement>
+    template<typename  EngineRequirement>
     class TuringMachinePrototype
     {
     public:
@@ -49,24 +49,24 @@ namespace TURING_MACHINE {
             std::size_t numPublicRegisters = 8,
             std::size_t numPrivateRegisters = 3,
             std::size_t memorySizeInBytes = 0) :
-            m_engine(new Engine<InstrExecRequirement>(wordSizeInBytes, numPublicRegisters, numPrivateRegisters, memorySizeInBytes)) {}
+            m_engine(new Engine<EngineRequirement>(wordSizeInBytes, numPublicRegisters, numPrivateRegisters, memorySizeInBytes)) {}
 
         // The argument engine must be dynamically allocated, its ownership is then transferred to this object
-        TuringMachinePrototype(Engine<InstrExecRequirement>* engine) :
+        TuringMachinePrototype(Engine<EngineRequirement>* engine) :
             m_engine(engine) {}
 
         virtual ~TuringMachinePrototype() {}
 
     private:
-        std::unique_ptr<Engine<InstrExecRequirement>> m_engine;
+        std::unique_ptr<Engine<EngineRequirement>> m_engine;
 
         // Implmentations of the finalized interface, overridable
-        virtual void resetImplementation(Engine<InstrExecRequirement>& engine)
+        virtual void resetImplementation(Engine<EngineRequirement>& engine)
         {
             engine.resetRegisters();
         }
 
-        virtual bool loadImplementation(Engine<InstrExecRequirement>& engine, const std::vector<byte_t>& program, std::size_t startingByteAddress)
+        virtual bool loadImplementation(Engine<EngineRequirement>& engine, const std::vector<byte_t>& program, std::size_t startingByteAddress)
         {
             std::size_t memorySize = engine.getMemorySizeInBytes();
             // startingByteAddress should not exceed the memory size
@@ -86,6 +86,6 @@ namespace TURING_MACHINE {
         * startingByteAddress is a hint to the program counter.
         * It is up to the implementor to decide how to deal with this parameter.
         */
-        virtual void runImplementation(Engine<InstrExecRequirement>& engine, std::size_t startingByteAddress) = 0;
+        virtual void runImplementation(Engine<EngineRequirement>& engine, std::size_t startingByteAddress) = 0;
     };
 }
