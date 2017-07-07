@@ -1,10 +1,11 @@
-#include "Processor.h"
+#include "processor.h"
 
+#include <algorithm>
 #include <cassert>
 #include <vector>
 
 
-namespace MACHINE {
+namespace TURING_MACHINE {
     using RegisterFile = std::vector<Processor::Register>;
 
     struct Processor::IMPL {
@@ -12,22 +13,22 @@ namespace MACHINE {
         std::size_t numPublicRegisters;
         std::size_t numPrivateRegisters;
 
-        RegisterFile publicRF;
-        RegisterFile privateRF;
+        RegisterFile publicRF; /*0...numPublicRegisters-1*/
+        RegisterFile privateRF; /*0...numPrivateRegisters-1*/
     };
 
     Processor::Processor(std::size_t wordSizeInBytes, std::size_t numPublicRegisters, std::size_t numPrivateRegisters) :
-        m_impl(new IMPL)
+        impl_(new IMPL)
     {
         assert((wordSizeInBytes >= 1) && ((wordSizeInBytes & (wordSizeInBytes - 1)) == 0));
 
-        m_impl->wordSizeInBytes = wordSizeInBytes;
-        m_impl->numPublicRegisters = numPublicRegisters;
-        m_impl->numPrivateRegisters = numPrivateRegisters;
+        impl_->wordSizeInBytes = wordSizeInBytes;
+        impl_->numPublicRegisters = numPublicRegisters;
+        impl_->numPrivateRegisters = numPrivateRegisters;
 
         // Initialize the RFs
-        m_impl->publicRF.resize(numPublicRegisters, Register(m_impl->wordSizeInBytes));
-        m_impl->privateRF.resize(numPrivateRegisters, Register(m_impl->wordSizeInBytes));
+        impl_->publicRF.resize(numPublicRegisters, Register(impl_->wordSizeInBytes));
+        impl_->privateRF.resize(numPrivateRegisters, Register(impl_->wordSizeInBytes));
     }
 
     Processor::~Processor()
@@ -36,42 +37,58 @@ namespace MACHINE {
 
     std::size_t Processor::getWordSizeInBytes() const
     {
-        return m_impl->wordSizeInBytes;
+        return impl_->wordSizeInBytes;
     }
 
     std::size_t Processor::getNumPublicRegisters() const
     {
-        return m_impl->numPublicRegisters;
+        return impl_->numPublicRegisters;
     }
 
     std::size_t Processor::getNumPrivateRegisters() const
     {
-        return m_impl->numPrivateRegisters;
+        return impl_->numPrivateRegisters;
     }
 
-    const Processor::Register & Processor::getPublicRegister(std::size_t idx) const
+    const Processor::Register & Processor::getPublicRegister(std::size_t pos) const
     {
-        assert(idx < m_impl->numPublicRegisters);
-        return m_impl->publicRF[idx];
+        assert(pos < impl_->numPublicRegisters);
+        return impl_->publicRF[pos];
     }
 
-    const Processor::Register & Processor::getPrivateRegister(std::size_t idx) const
+    const Processor::Register & Processor::getPrivateRegister(std::size_t pos) const
     {
-        assert(idx < m_impl->numPrivateRegisters);
-        return m_impl->privateRF[idx];
+        assert(pos < impl_->numPrivateRegisters);
+        return impl_->privateRF[pos];
     }
 
-    void Processor::setPublicRegister(std::size_t idx, const Processor::Register & reg)
+    void Processor::setPublicRegister(std::size_t pos, const Processor::Register & reg)
     {
-        assert(idx < m_impl->numPublicRegisters);
-        assert(reg.size() == m_impl->wordSizeInBytes);
-        m_impl->publicRF[idx] = reg;
+        assert(pos < impl_->numPublicRegisters);
+        assert(reg.size() == impl_->wordSizeInBytes);
+        impl_->publicRF[pos] = reg;
     }
 
-    void Processor::setPrivateRegister(std::size_t idx, const Processor::Register & reg)
+    void Processor::setPrivateRegister(std::size_t pos, const Processor::Register & reg)
     {
-        assert(idx < m_impl->numPrivateRegisters);
-        assert(reg.size() == m_impl->wordSizeInBytes);
-        m_impl->privateRF[idx] = reg;
+        assert(pos < impl_->numPrivateRegisters);
+        assert(reg.size() == impl_->wordSizeInBytes);
+        impl_->privateRF[pos] = reg;
+    }
+
+    void Processor::resetPublicRegisters()
+    {
+        std::for_each(impl_->publicRF.begin(), impl_->publicRF.end(), [](Register& reg) {reg.clear(); });
+    }
+
+    void Processor::resetPrivateRegisters()
+    {
+        std::for_each(impl_->privateRF.begin(), impl_->privateRF.end(), [](Register& reg) {reg.clear(); });
+    }
+
+    void Processor::resetRegisters()
+    {
+        resetPublicRegisters();
+        resetPrivateRegisters();
     }
 }

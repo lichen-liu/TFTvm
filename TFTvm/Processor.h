@@ -1,8 +1,10 @@
 #pragma once
+#include "TURING_MACHINE.h"
+
 #include <memory>
 #include <vector>
 
-#include "MACHINE.h"
+#include "word_t.h"
 
 
 /*
@@ -31,7 +33,7 @@
  *
  * DONE
  */
-namespace MACHINE {
+namespace TURING_MACHINE {
     class Processor
     {
     public:
@@ -46,14 +48,19 @@ namespace MACHINE {
         std::size_t getNumPublicRegisters()const;
         std::size_t getNumPrivateRegisters()const;
 
-        const Register& getPublicRegister(std::size_t idx)const;
-        const Register& getPrivateRegister(std::size_t idx)const;
+        const Register& getPublicRegister(std::size_t pos)const;
+        const Register& getPrivateRegister(std::size_t pos)const;
 
-        void setPublicRegister(std::size_t idx, const Register& reg);
-        void setPrivateRegister(std::size_t idx, const Register& reg);
+        void setPublicRegister(std::size_t pos, const Register& reg);
+        void setPrivateRegister(std::size_t pos, const Register& reg);
+
+        void resetPublicRegisters();
+        void resetPrivateRegisters();
+        void resetRegisters();
+
     private:
 
         struct IMPL;
-        std::unique_ptr<IMPL> m_impl;
+        std::unique_ptr<IMPL> impl_;
     };
 }

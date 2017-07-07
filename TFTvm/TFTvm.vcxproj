@@ -115,27 +115,38 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Action.h" />
-    <ClInclude Include="Engine.h" />
-    <ClInclude Include="ExecutableAction.h" />
-    <ClInclude Include="MACHINE.h" />
-    <ClInclude Include="TFT_ARCH_InstructionsActions.h" />
+    <ClInclude Include="action.h" />
+    <ClInclude Include="engine.h" />
+    <ClInclude Include="executable_action.h" />
+    <ClInclude Include="TFT_ARCH_machine.h" />
+    <ClInclude Include="turing_machine_prototype.h" />
+    <ClInclude Include="TURING_MACHINE.h" />
+    <ClInclude Include="TFT_ARCH_instructions_actions.h" />
     <ClInclude Include="TFT_ARCH.h" />
-    <ClInclude Include="InstructionAction.h" />
-    <ClInclude Include="TFT_ARCH_InstructionExecutationStages.h" />
-    <ClInclude Include="Memory.h" />
-    <ClInclude Include="Processor.h" />
+    <ClInclude Include="instruction_action.h" />
+    <ClInclude Include="TFT_ARCH_instr_exec_requirement.h" />
+    <ClInclude Include="memory.h" />
+    <ClInclude Include="processor.h" />
+    <ClInclude Include="word_t.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Action.cpp" />
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="ExecutableAction.cpp" />
-    <ClCompile Include="InstructionAction.cpp" />
+    <ClCompile Include="action.cpp" />
+    <ClCompile Include="engine.tpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="executable_action.cpp" />
+    <ClCompile Include="instruction_action.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TFT_ARCH_InstructionExecutationStages.cpp" />
-    <ClCompile Include="TFT_ARCH_InstructionsActions.cpp" />
-    <ClCompile Include="Memory.cpp" />
-    <ClCompile Include="Processor.cpp" />
+    <ClCompile Include="TFT_ARCH_machine.cpp" />
+    <ClCompile Include="TFT_ARCH_instr_exec_requirement.cpp" />
+    <ClCompile Include="TFT_ARCH_instructions_actions.cpp" />
+    <ClCompile Include="memory.cpp" />
+    <ClCompile Include="processor.cpp" />
+    <ClCompile Include="turing_machine_prototype.cpp" />
+    <ClCompile Include="word_t.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

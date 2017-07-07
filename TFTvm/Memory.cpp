@@ -1,21 +1,22 @@
-#include "Memory.h"
+#include "memory.h"
+#include "TURING_MACHINE.h"
 
-#include <memory>
 #include <cassert>
-#include "MACHINE.h"
+#include <memory>
 
 
-namespace MACHINE {
+namespace TURING_MACHINE {
 
     struct Memory::IMPL {
         std::size_t memorySize;
-        std::unique_ptr<byte_t[]> memory;
+        std::unique_ptr<byte_t[]> memory; /*0...memorySize-1*/
     };
 
-    Memory::Memory(std::size_t memorySize) :m_impl(new IMPL)
+    Memory::Memory(std::size_t memorySize) :impl_(new IMPL)
     {
-        m_impl->memorySize = memorySize;
-        m_impl->memory.reset(new byte_t[memorySize]);
+        impl_->memorySize = memorySize;
+        impl_->memory.reset(new byte_t[memorySize]);
+        // memory is not initialized due to its nature
     }
 
     Memory::~Memory()
@@ -24,30 +25,30 @@ namespace MACHINE {
 
     std::size_t Memory::getSize() const
     {
-        return m_impl->memorySize;
+        return impl_->memorySize;
     }
 
     byte_t Memory::read(size_t byteAddress) const
     {
-        assert(byteAddress < m_impl->memorySize);
-        return m_impl->memory[byteAddress];
+        assert(byteAddress < impl_->memorySize);
+        return impl_->memory[byteAddress];
     }
 
     void Memory::write(size_t byteAddress, byte_t value)
     {
-        assert(byteAddress < m_impl->memorySize);
-        m_impl->memory[byteAddress] = value;
+        assert(byteAddress < impl_->memorySize);
+        impl_->memory[byteAddress] = value;
     }
 
     byte_t & Memory::operator[](std::size_t byteAddress)
     {
-        assert(byteAddress < m_impl->memorySize);
-        return m_impl->memory[byteAddress];
+        assert(byteAddress < impl_->memorySize);
+        return impl_->memory[byteAddress];
     }
 
     const byte_t & Memory::operator[](std::size_t byteAddress) const
     {
-        assert(byteAddress < m_impl->memorySize);
-        return m_impl->memory[byteAddress];
+        assert(byteAddress < impl_->memorySize);
+        return impl_->memory[byteAddress];
     }
 }
