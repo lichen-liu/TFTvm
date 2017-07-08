@@ -15,7 +15,7 @@ Use Camel Case in general.
 ### Class/Enum/Namespace/Struct/type Name
 * Data type/Enum type (used as data type): data_t/enum_e
 * Class/Struct (used as object): MyClass
-* Pimpl Idiom Struct or Class: IMPL
+* PImpl Idiom Struct or Class: IMPL
 * Namespace: TURING_MACHINE
 * Enum Enumerator With Implicit Primitive Type Value Conversion: ENUMERATOR_APPLE
 * Enum Enumerator Without Implicit Primitive Type Value Conversion: enumeratorApple
@@ -26,6 +26,7 @@ Use Camel Case in general.
 * Mutator: setGender()
 * Accessor of Class: getTelephone()
 * Accessor of Data type: size()
+* File-scope Local Function: l_computeAge()
 ## Rules
 * Use namespace at all times
 * Enum Enumerator must be scoped, either via Enum Class or Namespace
@@ -38,3 +39,5 @@ Use Camel Case in general.
   - (Declaration file of this Implementation file or Namespace header file)
   - Standard Library, Standard Template Library
   - Other
+* Use PImpl Idiom where applicable
+* Use file scope helper function in anonymous namespace
