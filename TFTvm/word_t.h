@@ -55,6 +55,7 @@ namespace TURING_MACHINE {
 
         /* Property */
         std::size_t size()const;
+        bool equalsZero()const;
 
 
         /* Access the Value */

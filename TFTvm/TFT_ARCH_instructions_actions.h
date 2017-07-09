@@ -22,11 +22,50 @@ namespace TFT_ARCH {
         public ACTION::InstructionAction<InstrExecRequirement>
     {
     public:
-        TFT_ARCH_InstructionAction() :TFT_ARCH_InstructionAction(0, 0) {}
-        TFT_ARCH_InstructionAction(std::size_t rX, std::size_t rY) :rx(rX), ry(rY) {}
+        /*
+         * Factory method to create the xxx_instructionAction instance.
+         * The argument word_t is the instruction word.
+         * Return nullptr if the instruction is not valid.
+         */
+        static TFT_ARCH_InstructionAction* createInstructionAction(const TURING_MACHINE::word_t& instructionWord);
+
+        /*
+         * Decode the instructionWord.
+         * Return false if the instructionWord is not valid.
+         */
+        static bool decodeInstructionWord(const TURING_MACHINE::word_t& instructionWord, std::size_t& iii, std::size_t& xxx, std::size_t& yyy);
+
+
         virtual ~TFT_ARCH_InstructionAction() {}
 
+
+        /*
+         * Defines the default behaviour of the InstrExecRequirement interface.
+         */
+        virtual bool cycle3(InstrExecRequirement& engine) {
+            engine;/*Unused Reference*/
+            return true;
+        }
+        virtual bool cycle4(InstrExecRequirement& engine) {
+            engine;/*Unused Reference*/
+            return true;
+        }
+        virtual bool cycle5(InstrExecRequirement& engine) {
+            engine;/*Unused Reference*/
+            return true;
+        }
+        virtual bool cycle6(InstrExecRequirement& engine) {
+            engine;/*Unused Reference*/
+            return true;
+        }
+
     protected:
+        /*
+         * This base abstract class cannot be instantiated.
+         */
+        TFT_ARCH_InstructionAction() :TFT_ARCH_InstructionAction(0, 0) {}
+        TFT_ARCH_InstructionAction(std::size_t rX, std::size_t rY) :rx(rX), ry(rY) {}
+
         std::size_t rx;
         std::size_t ry;
     };
@@ -36,8 +75,10 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        MV_InstructionAction();
+        MV_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~MV_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
     };
 
 
@@ -45,8 +86,12 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        MVI_InstructionAction();
+        MVI_InstructionAction(std::size_t rX);
         virtual ~MVI_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
+        virtual bool cycle4(InstrExecRequirement& engine);
+        virtual bool cycle5(InstrExecRequirement& engine);
     };
 
 
@@ -54,8 +99,12 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        ADD_InstructionAction();
+        ADD_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~ADD_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
+        virtual bool cycle4(InstrExecRequirement& engine);
+        virtual bool cycle5(InstrExecRequirement& engine);
     };
 
 
@@ -63,8 +112,12 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        SUB_InstructionAction();
+        SUB_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~SUB_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
+        virtual bool cycle4(InstrExecRequirement& engine);
+        virtual bool cycle5(InstrExecRequirement& engine);
     };
 
 
@@ -72,8 +125,12 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        LD_InstructionAction();
+        LD_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~LD_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
+        virtual bool cycle4(InstrExecRequirement& engine);
+        virtual bool cycle5(InstrExecRequirement& engine);
     };
 
 
@@ -81,8 +138,13 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        ST_InstructionAction();
+        ST_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~ST_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
+        virtual bool cycle4(InstrExecRequirement& engine);
+        virtual bool cycle5(InstrExecRequirement& engine);
+        virtual bool cycle6(InstrExecRequirement& engine);
     };
 
 
@@ -90,7 +152,9 @@ namespace TFT_ARCH {
         public TFT_ARCH_InstructionAction
     {
     public:
-        MVNZ_InstructionAction();
+        MVNZ_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~MVNZ_InstructionAction();
+
+        virtual bool cycle3(InstrExecRequirement& engine);
     };
 }

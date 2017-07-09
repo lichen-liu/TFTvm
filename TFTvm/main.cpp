@@ -1,3 +1,16 @@
+#define _CRTDBG_MAP_ALLOC  
+#include <stdlib.h>  
+#include <crtdbg.h>  
+
+#ifdef _DEBUG
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+// Replace _NORMAL_BLOCK with _CLIENT_BLOCK if you want the
+// allocations to be of _CLIENT_BLOCK type
+#else
+#define DBG_NEW new
+#endif
+
+
 #include <iostream>
 #include <limits>
 
@@ -7,8 +20,13 @@
 #include "word_t.h"
 
 
-int main(void)
+int main(int argc, char **argv)
 {
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
+    argc;/*Unused Reference*/
+    argv;/*Unused Reference*/
+
     //constexpr std::size_t MEMORY_SIZE = 1024 * 1024 * 128; // 128 MiB
     //TURING_MACHINE::Engine<TFT_ARCH::InstrExecRequirement> engine(2, 8, 3, MEMORY_SIZE);
 
@@ -42,13 +60,14 @@ int main(void)
     std::cout << word << std::endl;
 
 
+    //std::cout << "-1=0x" << std::hex << -1 << std::dec << std::endl;
+    //std::cout << "-1u=0x" << std::hex << unsigned(-1) << std::dec << std::endl;
 
-    /*std::cout << "-1=0x" << std::hex << -1 << std::dec << std::endl;
-    std::cout << "-1u=0x" << std::hex << unsigned(-1) << std::dec << std::endl;*/
 
     // Pause the console
     std::cout << "Press ENTER to continue...";
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
 
     return EXIT_SUCCESS;
 }

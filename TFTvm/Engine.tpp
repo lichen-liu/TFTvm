@@ -75,14 +75,42 @@ namespace TURING_MACHINE {
     }
 
     template <typename EngineRequirement>
-    word_t Engine<EngineRequirement>::getPublicRegisterContent(std::size_t pos) const
+    word_t & Engine<EngineRequirement>::publicRegisterContent(std::size_t pos)
+    {
+        // implicitly cast register to register content
+        return impl_->processor.publicRegister(pos);
+    }
+
+    template <typename EngineRequirement>
+    const word_t & Engine<EngineRequirement>::publicRegisterContent(std::size_t pos) const
+    {
+        // implicitly cast register to register content
+        return impl_->processor.publicRegister(pos);
+    }
+
+    template <typename EngineRequirement>
+    word_t & Engine<EngineRequirement>::privateRegisterContent(std::size_t pos)
+    {
+        // implicitly cast register to register content
+        return impl_->processor.privateRegister(pos);
+    }
+
+    template <typename EngineRequirement>
+    const word_t & Engine<EngineRequirement>::privateRegisterContent(std::size_t pos) const
+    {
+        // implicitly cast register to register content
+        return impl_->processor.privateRegister(pos);
+    }
+
+    template <typename EngineRequirement>
+    const word_t& Engine<EngineRequirement>::getPublicRegisterContent(std::size_t pos) const
     {
         // implicitly cast register to register content
         return impl_->processor.getPublicRegister(pos);
     }
 
     template <typename EngineRequirement>
-    word_t Engine<EngineRequirement>::getPrivateRegisterContent(std::size_t pos) const
+    const word_t& Engine<EngineRequirement>::getPrivateRegisterContent(std::size_t pos) const
     {
         // implicitly cast register to register content
         return impl_->processor.getPrivateRegister(pos);

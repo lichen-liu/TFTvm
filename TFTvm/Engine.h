@@ -48,8 +48,13 @@ namespace TURING_MACHINE {
         virtual std::size_t getNumPublicRegisters()const;
         virtual std::size_t getNumPrivateRegisters()const;
 
-        virtual word_t getPublicRegisterContent(std::size_t pos)const;
-        virtual word_t getPrivateRegisterContent(std::size_t pos)const;
+        virtual word_t& publicRegisterContent(std::size_t pos);
+        virtual const word_t& publicRegisterContent(std::size_t pos)const;
+        virtual word_t& privateRegisterContent(std::size_t pos);
+        virtual const word_t& privateRegisterContent(std::size_t pos)const;
+
+        virtual const word_t& getPublicRegisterContent(std::size_t pos)const;
+        virtual const word_t& getPrivateRegisterContent(std::size_t pos)const;
 
         virtual void setPublicRegisterContent(std::size_t pos, const word_t& regContent);
         virtual void setPrivateRegisterContent(std::size_t pos, const word_t& regContent);

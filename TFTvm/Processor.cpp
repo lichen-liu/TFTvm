@@ -50,6 +50,30 @@ namespace TURING_MACHINE {
         return impl_->numPrivateRegisters;
     }
 
+    Processor::Register & Processor::publicRegister(std::size_t pos)
+    {
+        assert(pos < impl_->numPublicRegisters);
+        return impl_->publicRF[pos];
+    }
+
+    const Processor::Register & Processor::publicRegister(std::size_t pos) const
+    {
+        assert(pos < impl_->numPublicRegisters);
+        return impl_->publicRF[pos];
+    }
+
+    Processor::Register & Processor::privateRegister(std::size_t pos)
+    {
+        assert(pos < impl_->numPrivateRegisters);
+        return impl_->privateRF[pos];
+    }
+
+    const Processor::Register & Processor::privateRegister(std::size_t pos) const
+    {
+        assert(pos < impl_->numPrivateRegisters);
+        return impl_->privateRF[pos];
+    }
+
     const Processor::Register & Processor::getPublicRegister(std::size_t pos) const
     {
         assert(pos < impl_->numPublicRegisters);

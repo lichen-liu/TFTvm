@@ -48,6 +48,11 @@ namespace TURING_MACHINE {
         std::size_t getNumPublicRegisters()const;
         std::size_t getNumPrivateRegisters()const;
 
+        Register& publicRegister(std::size_t pos);
+        const Register& publicRegister(std::size_t pos)const;
+        Register& privateRegister(std::size_t pos);
+        const Register& privateRegister(std::size_t pos)const;
+
         const Register& getPublicRegister(std::size_t pos)const;
         const Register& getPrivateRegister(std::size_t pos)const;
 

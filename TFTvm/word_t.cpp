@@ -205,6 +205,13 @@ namespace TURING_MACHINE {
         return size_;
     }
 
+    bool word_t::equalsZero() const
+    {
+        return std::all_of(bytes_.get(), bytes_.get() + size_,
+            [](byte_t byte) ->bool {
+            return (byte == 0); });
+    }
+
     byte_t & word_t::at(std::size_t pos)
     {
         assert(pos < size_);
