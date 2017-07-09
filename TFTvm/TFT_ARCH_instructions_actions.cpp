@@ -2,7 +2,7 @@
 #include "TFT_ARCH_instructions_actions.h"
 
 #include <cassert>
-#include "TFT_ARCH_instr_exec_requirement.h"
+#include "TFT_ARCH_instr_engine_requirement.h"
 #include "word_t.h"
 
 
@@ -78,7 +78,7 @@ namespace TFT_ARCH {
      * MV: cycle3
      * rX<-[rY]
      */
-    bool MV_InstructionAction::cycle3(InstrExecRequirement & engine)
+    bool MV_InstructionAction::cycle3(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -102,7 +102,7 @@ namespace TFT_ARCH {
      * ADDR<-[PC]
      * [PC]++
      */
-    bool MVI_InstructionAction::cycle3(InstrExecRequirement & engine)
+    bool MVI_InstructionAction::cycle3(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -116,7 +116,7 @@ namespace TFT_ARCH {
      * MVI: cycle4
      * This stage is for memory access.
      */
-    bool MVI_InstructionAction::cycle4(InstrExecRequirement & engine)
+    bool MVI_InstructionAction::cycle4(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(MEMORY_DELAY_IN_CYCLE + 1);
 
@@ -127,7 +127,7 @@ namespace TFT_ARCH {
      * MVI: cycle5
      * rX<-MEM[[ADDR]]
      */
-    bool MVI_InstructionAction::cycle5(InstrExecRequirement & engine)
+    bool MVI_InstructionAction::cycle5(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -151,7 +151,7 @@ namespace TFT_ARCH {
      * ADD: cycle3
      * A<-[rX]
      */
-    bool ADD_InstructionAction::cycle3(InstrExecRequirement & engine)
+    bool ADD_InstructionAction::cycle3(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -164,7 +164,7 @@ namespace TFT_ARCH {
      * ADD: cycle4
      * G<-[A]+[rY]
      */
-    bool ADD_InstructionAction::cycle4(InstrExecRequirement & engine)
+    bool ADD_InstructionAction::cycle4(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -178,7 +178,7 @@ namespace TFT_ARCH {
      * ADD: cycle5
      * rX<-[G]
      */
-    bool ADD_InstructionAction::cycle5(InstrExecRequirement & engine)
+    bool ADD_InstructionAction::cycle5(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -201,7 +201,7 @@ namespace TFT_ARCH {
      * SUB: cycle3
      * A<-[rX]
      */
-    bool SUB_InstructionAction::cycle3(InstrExecRequirement & engine)
+    bool SUB_InstructionAction::cycle3(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -214,7 +214,7 @@ namespace TFT_ARCH {
      * SUB: cycle4
      * G<-[A]-[rY]
      */
-    bool SUB_InstructionAction::cycle4(InstrExecRequirement & engine)
+    bool SUB_InstructionAction::cycle4(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -228,7 +228,7 @@ namespace TFT_ARCH {
      * SUB: cycle5
      * rX<-[G]
      */
-    bool SUB_InstructionAction::cycle5(InstrExecRequirement & engine)
+    bool SUB_InstructionAction::cycle5(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -251,7 +251,7 @@ namespace TFT_ARCH {
      * LD: cycle3
      * ADDR<-[rY]
      */
-    bool LD_InstructionAction::cycle3(InstrExecRequirement & engine)
+    bool LD_InstructionAction::cycle3(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -264,7 +264,7 @@ namespace TFT_ARCH {
      * LD: cycle4
      * This stage is for memory access.
      */
-    bool LD_InstructionAction::cycle4(InstrExecRequirement & engine)
+    bool LD_InstructionAction::cycle4(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(MEMORY_DELAY_IN_CYCLE + 1);
 
@@ -275,7 +275,7 @@ namespace TFT_ARCH {
      * LD: cycle5
      * rX<-MEM[[ADDR]]
      */
-    bool LD_InstructionAction::cycle5(InstrExecRequirement & engine)
+    bool LD_InstructionAction::cycle5(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 
@@ -299,7 +299,7 @@ namespace TFT_ARCH {
      * ST: cycle3
      * ADDR<-[rY]
      */
-    bool ST_InstructionAction::cycle3(InstrExecRequirement &engine)
+    bool ST_InstructionAction::cycle3(InstrEngineRequirement &engine)
     {
         engine.incrementCycleCount(1);
 
@@ -312,7 +312,7 @@ namespace TFT_ARCH {
      * ST: cycle4
      * DOUT<-[rX]
      */
-    bool ST_InstructionAction::cycle4(InstrExecRequirement &engine)
+    bool ST_InstructionAction::cycle4(InstrEngineRequirement &engine)
     {
         engine.incrementCycleCount(1);
 
@@ -325,7 +325,7 @@ namespace TFT_ARCH {
      * ST: cycle5
      * This stage is for memory access.
      */
-    bool ST_InstructionAction::cycle5(InstrExecRequirement &engine)
+    bool ST_InstructionAction::cycle5(InstrEngineRequirement &engine)
     {
         engine.incrementCycleCount(MEMORY_DELAY_IN_CYCLE + 1);
 
@@ -336,7 +336,7 @@ namespace TFT_ARCH {
      * ST: cycle6
      * MEM[[ADDR]]<-[DOUT]
      */
-    bool ST_InstructionAction::cycle6(InstrExecRequirement &engine)
+    bool ST_InstructionAction::cycle6(InstrEngineRequirement &engine)
     {
         engine.incrementCycleCount(1);
 
@@ -361,7 +361,7 @@ namespace TFT_ARCH {
      * if(G!=0)
      *     rX<-[rY]
      */
-    bool MVNZ_InstructionAction::cycle3(InstrExecRequirement & engine)
+    bool MVNZ_InstructionAction::cycle3(InstrEngineRequirement & engine)
     {
         engine.incrementCycleCount(1);
 

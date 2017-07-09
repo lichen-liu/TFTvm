@@ -28,6 +28,9 @@ namespace TURING_MACHINE {
     class Engine : public EngineRequirement
     {
     public:
+        /*
+         * TODO: pass the args to the base contructor
+         */
         Engine(
             // Architecture-Related Settings
             std::size_t wordSizeInBytes = 2,

@@ -8,7 +8,7 @@
 * These sets of InstructionAction model the executation behaviour of instructions on
 * the TFT Architecture.
 *
-* ACTION::InstructionAction<InstrStageRequirement<InstrExecRequirement>> = 0
+* ACTION::InstructionAction<InstrStageRequirement<InstrEngineRequirement>> = 0
 * |
 * TFT_ARCH_InstructionAction = 0
 * |
@@ -16,11 +16,11 @@
 *
 */
 namespace TFT_ARCH {
-    class InstrExecRequirement; // forward declaration
+    class InstrEngineRequirement; // forward declaration
 
     /* This abstract class is the base for all InstructionAction used on TFT Architecture. */
     class TFT_ARCH_InstructionAction :
-        public ACTION::InstructionAction<InstrStageRequirement<InstrExecRequirement>>
+        public ACTION::InstructionAction<InstrStageRequirement<InstrEngineRequirement>>
     {
     public:
         /*
@@ -43,31 +43,31 @@ namespace TFT_ARCH {
         /*
          * Defines the default behaviour of the InstrStageRequirement interface.
          */
-        virtual bool cycle0(InstrExecRequirement& engine) override {
+        virtual bool cycle0(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
-        virtual bool cycle1(InstrExecRequirement& engine) override {
+        virtual bool cycle1(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
-        virtual bool cycle2(InstrExecRequirement& engine) override {
+        virtual bool cycle2(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
-        virtual bool cycle3(InstrExecRequirement& engine) override {
+        virtual bool cycle3(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
-        virtual bool cycle4(InstrExecRequirement& engine) override {
+        virtual bool cycle4(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
-        virtual bool cycle5(InstrExecRequirement& engine) override {
+        virtual bool cycle5(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
-        virtual bool cycle6(InstrExecRequirement& engine) override {
+        virtual bool cycle6(InstrEngineRequirement& engine) override {
             engine;/*Unused Reference*/
             return true;
         }
@@ -91,7 +91,7 @@ namespace TFT_ARCH {
         MV_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~MV_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
     };
 
 
@@ -102,9 +102,9 @@ namespace TFT_ARCH {
         MVI_InstructionAction(std::size_t rX);
         virtual ~MVI_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
-        virtual bool cycle4(InstrExecRequirement& engine)override;
-        virtual bool cycle5(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
+        virtual bool cycle4(InstrEngineRequirement& engine)override;
+        virtual bool cycle5(InstrEngineRequirement& engine)override;
     };
 
 
@@ -115,9 +115,9 @@ namespace TFT_ARCH {
         ADD_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~ADD_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
-        virtual bool cycle4(InstrExecRequirement& engine)override;
-        virtual bool cycle5(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
+        virtual bool cycle4(InstrEngineRequirement& engine)override;
+        virtual bool cycle5(InstrEngineRequirement& engine)override;
     };
 
 
@@ -128,9 +128,9 @@ namespace TFT_ARCH {
         SUB_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~SUB_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
-        virtual bool cycle4(InstrExecRequirement& engine)override;
-        virtual bool cycle5(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
+        virtual bool cycle4(InstrEngineRequirement& engine)override;
+        virtual bool cycle5(InstrEngineRequirement& engine)override;
     };
 
 
@@ -141,9 +141,9 @@ namespace TFT_ARCH {
         LD_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~LD_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
-        virtual bool cycle4(InstrExecRequirement& engine)override;
-        virtual bool cycle5(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
+        virtual bool cycle4(InstrEngineRequirement& engine)override;
+        virtual bool cycle5(InstrEngineRequirement& engine)override;
     };
 
 
@@ -154,10 +154,10 @@ namespace TFT_ARCH {
         ST_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~ST_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
-        virtual bool cycle4(InstrExecRequirement& engine)override;
-        virtual bool cycle5(InstrExecRequirement& engine)override;
-        virtual bool cycle6(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
+        virtual bool cycle4(InstrEngineRequirement& engine)override;
+        virtual bool cycle5(InstrEngineRequirement& engine)override;
+        virtual bool cycle6(InstrEngineRequirement& engine)override;
     };
 
 
@@ -168,6 +168,6 @@ namespace TFT_ARCH {
         MVNZ_InstructionAction(std::size_t rX, std::size_t rY);
         virtual ~MVNZ_InstructionAction();
 
-        virtual bool cycle3(InstrExecRequirement& engine)override;
+        virtual bool cycle3(InstrEngineRequirement& engine)override;
     };
 }

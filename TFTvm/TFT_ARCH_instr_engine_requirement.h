@@ -30,5 +30,17 @@ namespace TFT_ARCH {
         virtual void writeWord(std::size_t address, const TURING_MACHINE::word_t& value,
             TURING_MACHINE::addressable_e addressable,
             TURING_MACHINE::endian_e endian) = 0;
+
+        // Count the cycle
+        std::size_t getCycleCount()const;
+        std::size_t incrementCycleCount(std::size_t amount = 1);
+        void resetCycleCount();
+
+    protected:
+        // This class can not be instantiated by itself
+        InstrEngineRequirement() :cycleCount_(0) {}
+
+    private:
+        std::size_t cycleCount_; // use size_t for now
     };
 }

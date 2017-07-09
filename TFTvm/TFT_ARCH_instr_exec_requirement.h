@@ -8,9 +8,9 @@
 /*
  * This abstract class defines the interface of architecture-specific
  * instruction executation requirement.
- * This interface is for Engine only.
+ * This interface is for by TuringMachinePrototype~Engine only.
  *
- * InstrEngineRequirement = 0      InstrStageRequirement<InstrStageRequirement<InstrExecRequirement>> = 0
+ * InstrEngineRequirement = 0      InstrStageRequirement<InstrStageRequirement<InstrEngineRequirement>> = 0
  * |                               |
  * InstrExecRequirement = 0 --------
  *
@@ -18,31 +18,18 @@
 namespace TFT_ARCH {
 
     class InstrExecRequirement :
-        public InstrEngineRequirement, public InstrStageRequirement<InstrStageRequirement<InstrExecRequirement>>
+        public InstrEngineRequirement, public InstrStageRequirement<InstrStageRequirement<InstrEngineRequirement>>
     {
     public:
         // Instruction executation stages
-        virtual bool cycle0(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-        virtual bool cycle1(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-        virtual bool cycle2(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-        virtual bool cycle3(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-        virtual bool cycle4(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-        virtual bool cycle5(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-        virtual bool cycle6(InstrStageRequirement<InstrExecRequirement>& instruction) override;
-
-        // Count the cycle
-        std::size_t getCycleCount()const;
-        std::size_t incrementCycleCount(std::size_t amount = 1);
-        void resetCycleCount();
-
+        virtual bool cycle0(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        virtual bool cycle1(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        virtual bool cycle2(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        virtual bool cycle3(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        virtual bool cycle4(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        virtual bool cycle5(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        virtual bool cycle6(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
 
         virtual ~InstrExecRequirement() {}
-
-    protected:
-        // This class can not be instantiated by itself
-        InstrExecRequirement() :cycleCount_(0) {}
-
-    private:
-        std::size_t cycleCount_; // use size_t for now
     };
 }
