@@ -4,8 +4,10 @@
 
 
 /*
- * This class defines the non-abstract interface of architecture-specific instruction executation requirement
- * for TFT Architecture.
+ * This non-abstract class defines the interface of architecture-specific
+ * instruction executation requirement.
+ * The default definition in this class is for compatibility only.
+ * Both Engine and InstructionAction instances should implement their own definitions.
  *
  * InstrExecRequirement
  *
@@ -15,37 +17,39 @@ namespace TFT_ARCH {
     {
     public:
         // Instruction executation stages
-        virtual bool cycle0(InstrExecRequirement& engine) { engine; return true; }
-        virtual bool cycle1(InstrExecRequirement& engine) { engine; return true; }
-        virtual bool cycle2(InstrExecRequirement& engine) { engine; return true; }
-        virtual bool cycle3(InstrExecRequirement& engine) { engine; return true; }
-        virtual bool cycle4(InstrExecRequirement& engine) { engine; return true; }
-        virtual bool cycle5(InstrExecRequirement& engine) { engine; return true; }
-        virtual bool cycle6(InstrExecRequirement& engine) { engine; return true; }
+        virtual bool cycle0(InstrExecRequirement&);
+        virtual bool cycle1(InstrExecRequirement&);
+        virtual bool cycle2(InstrExecRequirement&);
+        virtual bool cycle3(InstrExecRequirement&);
+        virtual bool cycle4(InstrExecRequirement&);
+        virtual bool cycle5(InstrExecRequirement&);
+        virtual bool cycle6(InstrExecRequirement&);
 
         // Instruction hardware requirement
-        virtual TURING_MACHINE::word_t getPublicRegisterContent(std::size_t idx)const { idx; return TURING_MACHINE::word_t(); }
-        virtual TURING_MACHINE::word_t getPrivateRegisterContent(std::size_t idx)const { idx; return TURING_MACHINE::word_t(); }
-        virtual void setPublicRegisterContent(std::size_t idx, const TURING_MACHINE::word_t& regContent) { idx; regContent; }
-        virtual void setPrivateRegisterContent(std::size_t idx, const TURING_MACHINE::word_t& regContent) { idx; regContent; }
-        virtual std::size_t getMemorySizeInBytes()const { return 0; }
+        virtual TURING_MACHINE::word_t getPublicRegisterContent(std::size_t pos)const;
+        virtual TURING_MACHINE::word_t getPrivateRegisterContent(std::size_t pos)const;
+        virtual void setPublicRegisterContent(std::size_t pos, const TURING_MACHINE::word_t& regContent);
+        virtual void setPrivateRegisterContent(std::size_t pos, const TURING_MACHINE::word_t& regContent);
+        virtual std::size_t getMemorySizeInBytes()const;
         virtual TURING_MACHINE::word_t readWord(std::size_t address,
             TURING_MACHINE::addressable_e addressable,
-            TURING_MACHINE::endian_e endian)const
-        {
-            address;
-            addressable;
-            endian;
-            return TURING_MACHINE::word_t();
-        }
+            TURING_MACHINE::endian_e endian)const;
         virtual void writeWord(std::size_t address, const TURING_MACHINE::word_t& value,
             TURING_MACHINE::addressable_e addressable,
-            TURING_MACHINE::endian_e endian)
-        {
-            address;
-            value;
-            addressable;
-            endian;
-        }
+            TURING_MACHINE::endian_e endian);
+
+
+        virtual ~InstrExecRequirement() {}
+
+    protected:
+        // This class can not be instantiated by itself
+        InstrExecRequirement() :cycleCount_(0) {}
+
+        std::size_t getCycleCount()const;
+        std::size_t incrementCycleCount();
+        void resetCycleCount();
+
+    private:
+        std::size_t cycleCount_; // use size_t for now
     };
 }

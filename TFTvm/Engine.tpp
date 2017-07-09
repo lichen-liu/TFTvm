@@ -75,31 +75,31 @@ namespace TURING_MACHINE {
     }
 
     template <typename EngineRequirement>
-    word_t Engine<EngineRequirement>::getPublicRegisterContent(std::size_t idx) const
+    word_t Engine<EngineRequirement>::getPublicRegisterContent(std::size_t pos) const
     {
         // implicitly cast register to register content
-        return impl_->processor.getPublicRegister(idx);
+        return impl_->processor.getPublicRegister(pos);
     }
 
     template <typename EngineRequirement>
-    word_t Engine<EngineRequirement>::getPrivateRegisterContent(std::size_t idx) const
+    word_t Engine<EngineRequirement>::getPrivateRegisterContent(std::size_t pos) const
     {
         // implicitly cast register to register content
-        return impl_->processor.getPrivateRegister(idx);
+        return impl_->processor.getPrivateRegister(pos);
     }
 
     template <typename EngineRequirement>
-    void Engine<EngineRequirement>::setPublicRegisterContent(std::size_t idx, const word_t & regContent)
+    void Engine<EngineRequirement>::setPublicRegisterContent(std::size_t pos, const word_t & regContent)
     {
         // implicitly cast register content to register
-        impl_->processor.setPublicRegister(idx, regContent);
+        impl_->processor.setPublicRegister(pos, regContent);
     }
 
     template <typename EngineRequirement>
-    void Engine<EngineRequirement>::setPrivateRegisterContent(std::size_t idx, const word_t & regContent)
+    void Engine<EngineRequirement>::setPrivateRegisterContent(std::size_t pos, const word_t & regContent)
     {
         // implicitly cast register content to register
-        impl_->processor.setPrivateRegister(idx, regContent);
+        impl_->processor.setPrivateRegister(pos, regContent);
     }
 
     template <typename EngineRequirement>

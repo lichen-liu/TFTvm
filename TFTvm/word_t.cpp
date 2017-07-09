@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 #include <iterator>
 
 
@@ -107,5 +108,18 @@ namespace TURING_MACHINE {
     void word_t::clear()
     {
         std::for_each(bytes_.get(), bytes_.get() + size_, [](byte_t &ele) {ele = 0; });
+    }
+
+    std::ostream& operator<<(std::ostream& os, const word_t& word) {
+        std::ios_base::fmtflags f(os.flags());// save the os flags
+
+        os << "0x";
+        std::size_t n = word.size();
+        for (std::size_t i = 0; i < n; i++) {
+            os << std::hex << ((unsigned int)word[n - 1 - i]);
+        }
+
+        os.flags(f); // reset os flags
+        return os;
     }
 }
