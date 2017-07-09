@@ -19,11 +19,18 @@ int main(void)
 
     //std::cout << "MEM[20]=" << (unsigned int)engine.readByte(20) << std::endl;
     //std::cout << "MEM[25]=" << (unsigned int)engine.readByte(25) << std::endl;
-    TURING_MACHINE::word_t word(sizeof(unsigned int));
+    //TURING_MACHINE::word_t word(sizeof(unsigned int));
 
-    std::cout << "0x12345678u=" << word.setValue(0x12345678u) << std::endl;
-    std::cout << "12345u=" << word.setValue(12345u) << std::endl;
-    std::cout << word.template getValue<unsigned int>() << std::endl;
+    //std::cout << "0x123456789abcu=" << word.setValue(0x123456789abcu) << std::endl;
+    //std::cout << "12345u=" << word.setValue(12345u) << std::endl;
+    //std::cout << word.template getValue<unsigned int>() << std::endl;
+    TURING_MACHINE::word_t word(sizeof(int));
+    std::cout << "-12345=0x" << std::hex << -12345 << std::dec << std::endl;
+    std::cout << "word=" << word.setValue(-12345) << std::endl;
+    std::cout << word.template getValue<int>() << std::endl;
+
+    std::cout << "-1=0x" << std::hex << -1 << std::dec << std::endl;
+    std::cout << "-1u=0x" << std::hex << unsigned(-1) << std::dec << std::endl;
 
     // Pause the console
     std::cout << "Press ENTER to continue...";

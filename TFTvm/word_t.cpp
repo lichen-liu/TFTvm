@@ -5,10 +5,28 @@
 #include <cassert>
 #include <iostream>
 #include <iterator>
+#include <limits>
 
+
+namespace {
+    using namespace TURING_MACHINE;
+
+    void byteFullAdder(byte_t a, byte_t b, byte_t cin, byte_t& s, byte_t& cout)
+    {
+        using u_t = unsigned int;
+        static constexpr u_t MAX = static_cast<u_t>(std::numeric_limits<byte_t>::max()); // make this const a function scope static variable
+
+        u_t byteSum = static_cast<u_t>(a) + static_cast<u_t>(b) + static_cast<u_t>(cin);
+        u_t carryOut = byteSum / (MAX + 1);
+        assert(carryOut <= MAX); // carryOut should never overflow the byte_t
+
+        cout = static_cast<byte_t>(carryOut);
+        s = static_cast<byte_t>(byteSum % (MAX + 1));
+    }
+}
 
 namespace TURING_MACHINE {
-    word_t::word_t() :word_t(0)
+    word_t::word_t() :word_t(std::size_t(0))
     {
     }
 
@@ -76,6 +94,65 @@ namespace TURING_MACHINE {
             rhs.bytes_.get(), rhs.bytes_.get() + rhs.size_);
     }
 
+    word_t word_t::operator+() const
+    {
+        return *this;
+    }
+
+    word_t & word_t::operator+=(const word_t & rhs)
+    {
+        std::size_t len = std::min(size_, rhs.size_);
+
+        byte_t cout = 0;
+        byte_t cin = 0;
+        byte_t s = 0;
+
+        for (std::size_t i = 0; i < len; i++) {
+            cin = cout;
+            byteFullAdder(bytes_[i], rhs.bytes_[i], cin, s, cout);
+            bytes_[i] = s;
+        }
+
+        // while we have not yet reached the MSB of this->bytes_
+        // propagate the carry
+        for (std::size_t i = len; i < size_; i++) {
+            cin = cout;
+            if (cin == 0)
+                break;
+            byteFullAdder(bytes_[i], 0, cin, s, cout);
+            bytes_[i] = s;
+        }
+
+        return *this;
+    }
+
+    word_t word_t::operator~() const
+    {
+        word_t other(*this);
+        std::for_each(other.bytes_.get(), other.bytes_.get() + other.size_,
+            [](byte_t &byte) {
+            byte = ~byte;
+        });
+        return other;
+    }
+
+    word_t & word_t::operator++()
+    {
+        byte_t cout = 1;
+        byte_t cin = 0;
+        byte_t s = 0;
+
+        for (std::size_t i = 0; i < size_; ++i) {
+            cin = cout;
+            if (cin == 0)
+                break;
+            byteFullAdder(bytes_[i], 0, cin, s, cout);
+            bytes_[i] = s;
+        }
+
+        return *this;
+    }
+
     std::size_t word_t::size() const
     {
         return size_;
@@ -110,13 +187,19 @@ namespace TURING_MACHINE {
         std::for_each(bytes_.get(), bytes_.get() + size_, [](byte_t &ele) {ele = 0; });
     }
 
+    word_t operator+(word_t lhs, const word_t & rhs)
+    {
+        lhs += rhs;
+        return lhs;
+    }
+
     std::ostream& operator<<(std::ostream& os, const word_t& word) {
         std::ios_base::fmtflags f(os.flags());// save the os flags
 
         os << "0x";
         std::size_t n = word.size();
         for (std::size_t i = 0; i < n; i++) {
-            os << std::hex << ((unsigned int)word[n - 1 - i]);
+            os << std::hex << std::uppercase << ((unsigned int)word[n - 1 - i]);
         }
 
         os.flags(f); // reset os flags

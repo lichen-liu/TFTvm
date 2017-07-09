@@ -9,33 +9,34 @@
 namespace TFT_ARCH {
 
     /*
-     * cycle0 is the same for all instructions
+     * cycle0 is the same for all instructions.
+     * This cycle is for storing PC into arbitrary ADDR(not modeled).
      */
     bool InstrExecRequirement::cycle0(InstrExecRequirement & instruction)
     {
         instruction;
         cycleCount_++;
-        // this cycle is for storing PC into arbitrary ADDR(not modeled).
+
         return true;
     }
 
     /*
-     * cycle1 is the same for all instructions
+     * cycle1 is the same for all instructions.
+     * This cycle is for memory access (read instruction)
      */
     bool InstrExecRequirement::cycle1(InstrExecRequirement & instruction)
     {
         instruction;
         cycleCount_ += MEMORY_DELAY_IN_CYCLE;
-        // this cycle is for memory access (read instruction)
 
-        // WIP
+        std::size_t addr = getPublicRegisterContent(PUBLIC_REG_E::PC).template getValue<std::size_t>();
+        setPrivateRegisterContent(PRIVATE_REG_E::IR, readWord(addr, ADDRESSABLE, ENDIAN));
 
-        //setPrivateRegisterContent()
         return true;
     }
 
     /*
-     * cycle2 is the same for all instructions
+     * cycle2 is the same for all instructions.
      */
     bool InstrExecRequirement::cycle2(InstrExecRequirement & instruction)
     {
