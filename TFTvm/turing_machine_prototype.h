@@ -19,7 +19,7 @@
  */
 namespace TURING_MACHINE {
 
-    template<typename  EngineRequirement>
+    template<typename EngineRequirement>
     class TuringMachinePrototype
     {
     public:
