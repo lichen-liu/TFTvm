@@ -216,6 +216,7 @@ namespace TURING_MACHINE {
     template <typename EngineRequirement>
     void Engine<EngineRequirement>::writeWord(std::size_t address, const word_t & value, addressable_e addressable, endian_e endian)
     {
+        // word size should match
         assert(value.size() == impl_->wordSizeInBytes);
 
         std::size_t byteAddress = 0;

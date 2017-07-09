@@ -18,6 +18,6 @@ namespace TFT_ARCH {
         virtual ~Machine();
 
     private:
-        virtual void runImplementation(TURING_MACHINE::Engine<InstrExecRequirement>& engine, std::size_t startingByteAddress) override;
+        virtual bool runImplementation(TURING_MACHINE::Engine<InstrExecRequirement>& engine, std::size_t startingAddress) override;
     };
 }

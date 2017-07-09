@@ -17,7 +17,9 @@ namespace ACTION {
         public Action
     {
     public:
-        ExecutableAction() {}
         virtual ~ExecutableAction() {}
+
+    protected:
+        ExecutableAction() {}
     };
 }

@@ -17,9 +17,10 @@ namespace TFT_ARCH {
     {
     }
 
-    void Machine::runImplementation(TURING_MACHINE::Engine<InstrExecRequirement> & engine, std::size_t startingByteAddress)
+    bool Machine::runImplementation(TURING_MACHINE::Engine<InstrExecRequirement> & engine, std::size_t startingAddress)
     {
         engine;
-        startingByteAddress;
+        startingAddress;
+        return true;
     }
 }

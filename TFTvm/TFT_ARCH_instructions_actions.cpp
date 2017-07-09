@@ -2,6 +2,7 @@
 #include "TFT_ARCH_instructions_actions.h"
 
 #include <cassert>
+#include "TFT_ARCH_instr_exec_requirement.h"
 #include "word_t.h"
 
 
@@ -340,7 +341,7 @@ namespace TFT_ARCH {
         engine.incrementCycleCount(1);
 
         std::size_t addr = engine.privateRegisterContent(PRIVATE_REG_E::ADDR).template getValue<std::size_t>();
-        writeWord(addr, engine.privateRegisterContent(PRIVATE_REG_E::DOUT), ADDRESSABLE, ENDIAN);
+        engine.writeWord(addr, engine.privateRegisterContent(PRIVATE_REG_E::DOUT), ADDRESSABLE, ENDIAN);
 
         return true;
     }

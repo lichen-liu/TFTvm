@@ -68,6 +68,12 @@
     <ClInclude Include="TFT_ARCH_machine.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
+    <ClInclude Include="TFT_ARCH_instr_stage_requirement.h">
+      <Filter>Header Files\TFT_ARCH</Filter>
+    </ClInclude>
+    <ClInclude Include="TFT_ARCH_instr_engine_requirement.h">
+      <Filter>Header Files\TFT_ARCH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -104,6 +110,12 @@
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
     <ClCompile Include="TFT_ARCH_machine.cpp">
+      <Filter>Source Files\TFT_ARCH</Filter>
+    </ClCompile>
+    <ClCompile Include="TFT_ARCH_instr_stage_requirement.cpp">
+      <Filter>Source Files\TFT_ARCH</Filter>
+    </ClCompile>
+    <ClCompile Include="TFT_ARCH_instr_engine_requirement.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
     </ClCompile>
   </ItemGroup>

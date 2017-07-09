@@ -11,9 +11,9 @@
  *
  *  Action = 0
  *  |
- *  ExecutableAction = 0                        <StageRequirement>
- *  |                                           |
- *  InstructionAction<StageRequirement> = 0 ----
+ *  ExecutableAction = 0                                <StageRequirement>
+ *  |                                                   |
+ *  InstructionAction<typename StageRequirement> = 0 ----
  *
  */
 namespace ACTION {
@@ -22,12 +22,14 @@ namespace ACTION {
         public ExecutableAction, public StageRequirement
     {
     public:
-        InstructionAction() {}
         virtual ~InstructionAction() {}
 
         /*
          * Architecture-specific instruction executation requirement
          * declared in template<typename StageRequirement>
          */
+
+    protected:
+        InstructionAction() {}
     };
 }

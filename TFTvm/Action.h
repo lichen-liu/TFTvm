@@ -13,7 +13,9 @@ namespace ACTION {
     class Action
     {
     public:
-        Action() {}
         virtual ~Action() {}
+
+    protected:
+        Action() {}
     };
 }

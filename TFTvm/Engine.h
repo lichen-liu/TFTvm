@@ -18,7 +18,7 @@
  *
  * <EngineRequirement>
  * |
- * Engine<EngineRequirement>
+ * Engine<typename EngineRequirement>
  *
  * DONE
  */

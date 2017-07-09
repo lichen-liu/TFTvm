@@ -126,6 +126,8 @@
     <ClInclude Include="action.h" />
     <ClInclude Include="engine.h" />
     <ClInclude Include="executable_action.h" />
+    <ClInclude Include="TFT_ARCH_instr_engine_requirement.h" />
+    <ClInclude Include="TFT_ARCH_instr_stage_requirement.h" />
     <ClInclude Include="TFT_ARCH_machine.h" />
     <ClInclude Include="turing_machine_prototype.h" />
     <ClInclude Include="TURING_MACHINE.h" />
@@ -148,6 +150,8 @@
     <ClCompile Include="executable_action.cpp" />
     <ClCompile Include="instruction_action.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TFT_ARCH_instr_engine_requirement.cpp" />
+    <ClCompile Include="TFT_ARCH_instr_stage_requirement.cpp" />
     <ClCompile Include="TFT_ARCH_machine.cpp" />
     <ClCompile Include="TFT_ARCH_instr_exec_requirement.cpp" />
     <ClCompile Include="TFT_ARCH_instructions_actions.cpp" />
