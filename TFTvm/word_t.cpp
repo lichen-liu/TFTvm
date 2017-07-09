@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <iomanip>
 #include <iterator>
 #include <limits>
 
@@ -94,8 +95,21 @@ namespace TURING_MACHINE {
             rhs.bytes_.get(), rhs.bytes_.get() + rhs.size_);
     }
 
+    word_t word_t::operator-() const
+    {
+        word_t obj = operator~();
+        ++obj;
+        return obj;
+    }
+
     word_t word_t::operator+() const
     {
+        return *this;
+    }
+
+    word_t & word_t::operator-=(const word_t & rhs)
+    {
+        operator+=(-rhs);
         return *this;
     }
 
@@ -153,6 +167,39 @@ namespace TURING_MACHINE {
         return *this;
     }
 
+    word_t & word_t::operator--()
+    {
+        byte_t cout = std::numeric_limits<byte_t>::max();
+        byte_t cin = 0;
+        byte_t s = 0;
+
+        for (std::size_t i = 0; i < size_; ++i) {
+            cin = cout;
+            if (cin == 0)
+                break;
+            byteFullAdder(bytes_[i], 0, cin, s, cout);
+            if (cin == std::numeric_limits<byte_t>::max())
+                cout--;
+            bytes_[i] = s;
+        }
+
+        return *this;
+    }
+
+    word_t word_t::operator++(int)
+    {
+        word_t obj;
+        operator++();
+        return obj;
+    }
+
+    word_t word_t::operator--(int)
+    {
+        word_t obj;
+        operator--();
+        return obj;
+    }
+
     std::size_t word_t::size() const
     {
         return size_;
@@ -187,6 +234,12 @@ namespace TURING_MACHINE {
         std::for_each(bytes_.get(), bytes_.get() + size_, [](byte_t &ele) {ele = 0; });
     }
 
+    word_t operator-(word_t lhs, const word_t & rhs)
+    {
+        lhs -= rhs;
+        return lhs;
+    }
+
     word_t operator+(word_t lhs, const word_t & rhs)
     {
         lhs += rhs;
@@ -199,7 +252,7 @@ namespace TURING_MACHINE {
         os << "0x";
         std::size_t n = word.size();
         for (std::size_t i = 0; i < n; i++) {
-            os << std::hex << std::uppercase << ((unsigned int)word[n - 1 - i]);
+            os << std::hex << std::nouppercase << std::setfill('0') << std::setw(2) << ((unsigned int)word[n - 1 - i]);
         }
 
         os.flags(f); // reset os flags

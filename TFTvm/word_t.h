@@ -41,6 +41,7 @@ namespace TURING_MACHINE {
         /* Arithmetic Operators */
         word_t operator-()const;
         word_t operator+()const;
+        word_t& operator-=(const word_t& rhs);
         word_t& operator+=(const word_t& rhs);
         word_t operator~()const;
 
@@ -83,6 +84,7 @@ namespace TURING_MACHINE {
         std::size_t size_;
     };
     /* Arithmetic Operators */
+    word_t operator-(word_t lhs, const word_t& rhs);
     word_t operator+(word_t lhs, const word_t& rhs);
 
 
