@@ -26,6 +26,8 @@ namespace TFT_ARCH {
         /*
          * Factory method to create the xxx_instructionAction instance.
          * The argument word_t is the instruction word.
+         * This method dynamically create the corresponding InstructionAction object on heap(operator new) and returns
+         * the pointer to it.
          * Return nullptr if the instruction is not valid.
          */
         static TFT_ARCH_InstructionAction* createInstructionAction(const TURING_MACHINE::word_t& instructionWord);
@@ -35,6 +37,11 @@ namespace TFT_ARCH {
          * Return false if the instructionWord is not valid.
          */
         static bool decodeInstructionWord(const TURING_MACHINE::word_t& instructionWord, std::size_t& iii, std::size_t& xxx, std::size_t& yyy);
+
+        /*
+         * Returns a NOOP_InstructionAction that performs nothing.
+         */
+        static TFT_ARCH_InstructionAction& getNOOPInstructionAction();
 
 
         virtual ~TFT_ARCH_InstructionAction() {}
@@ -169,5 +176,14 @@ namespace TFT_ARCH {
         virtual ~MVNZ_InstructionAction();
 
         virtual bool cycle3(InstrEngineRequirement& engine)override;
+    };
+
+
+    class NOOP_InstructionAction :
+        public TFT_ARCH_InstructionAction
+    {
+    public:
+        NOOP_InstructionAction();
+        virtual ~NOOP_InstructionAction();
     };
 }

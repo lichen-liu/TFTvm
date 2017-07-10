@@ -6,6 +6,12 @@
 #include "word_t.h"
 
 
+namespace {
+    using namespace TFT_ARCH;
+
+    NOOP_InstructionAction s_noopInstructionAction;
+}
+
 namespace TFT_ARCH {
 
     TFT_ARCH_InstructionAction * TFT_ARCH_InstructionAction::createInstructionAction(const TURING_MACHINE::word_t& instructionWord)
@@ -62,6 +68,11 @@ namespace TFT_ARCH {
         iii = instruction & 448; // 0b1 1100 0000
 
         return true;
+    }
+
+    TFT_ARCH_InstructionAction & TFT_ARCH_InstructionAction::getNOOPInstructionAction()
+    {
+        return s_noopInstructionAction;
     }
 
 
@@ -370,5 +381,15 @@ namespace TFT_ARCH {
         }
 
         return true;
+    }
+
+
+    NOOP_InstructionAction::NOOP_InstructionAction() :
+        TFT_ARCH_InstructionAction(0, 0)
+    {
+    }
+
+    NOOP_InstructionAction::~NOOP_InstructionAction()
+    {
     }
 }

@@ -25,6 +25,7 @@ namespace TFT_ARCH {
         virtual bool cycle0(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
         virtual bool cycle1(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
         virtual bool cycle2(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
+        // IR<-instructionWord after cycle2
         virtual bool cycle3(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
         virtual bool cycle4(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
         virtual bool cycle5(InstrStageRequirement<InstrEngineRequirement>& instruction) override;

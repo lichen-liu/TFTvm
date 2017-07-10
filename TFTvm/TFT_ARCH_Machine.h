@@ -18,6 +18,9 @@ namespace TFT_ARCH {
         virtual ~Machine();
 
     private:
+        /*
+         * TFT_ARCH is word-addressable, therefore the argument startingAddress is a word address.
+         */
         virtual bool runImplementation(TURING_MACHINE::Engine<InstrExecRequirement>& engine, std::size_t startingAddress) override;
     };
 }

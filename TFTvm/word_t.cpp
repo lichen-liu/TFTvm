@@ -12,7 +12,7 @@
 namespace {
     using namespace TURING_MACHINE;
 
-    void byteFullAdder(byte_t a, byte_t b, byte_t cin, byte_t& s, byte_t& cout)
+    void l_byteFullAdder(byte_t a, byte_t b, byte_t cin, byte_t& s, byte_t& cout)
     {
         using u_t = unsigned int;
         static constexpr u_t MAX = static_cast<u_t>(std::numeric_limits<byte_t>::max()); // make this const a function scope static variable
@@ -123,7 +123,7 @@ namespace TURING_MACHINE {
 
         for (std::size_t i = 0; i < len; i++) {
             cin = cout;
-            byteFullAdder(bytes_[i], rhs.bytes_[i], cin, s, cout);
+            l_byteFullAdder(bytes_[i], rhs.bytes_[i], cin, s, cout);
             bytes_[i] = s;
         }
 
@@ -133,7 +133,7 @@ namespace TURING_MACHINE {
             cin = cout;
             if (cin == 0)
                 break;
-            byteFullAdder(bytes_[i], 0, cin, s, cout);
+            l_byteFullAdder(bytes_[i], 0, cin, s, cout);
             bytes_[i] = s;
         }
 
@@ -160,7 +160,7 @@ namespace TURING_MACHINE {
             cin = cout;
             if (cin == 0)
                 break;
-            byteFullAdder(bytes_[i], 0, cin, s, cout);
+            l_byteFullAdder(bytes_[i], 0, cin, s, cout);
             bytes_[i] = s;
         }
 
@@ -177,7 +177,7 @@ namespace TURING_MACHINE {
             cin = cout;
             if (cin == 0)
                 break;
-            byteFullAdder(bytes_[i], 0, cin, s, cout);
+            l_byteFullAdder(bytes_[i], 0, cin, s, cout);
             if (cin == std::numeric_limits<byte_t>::max())
                 cout--;
             bytes_[i] = s;
