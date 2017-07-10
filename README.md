@@ -12,6 +12,7 @@ Use Camel Case in general.
 * Boolean: isLegal
 * Class Private Data Member: myVar_
 * Pointer: Add "_ptr" if unclear
+* File-scope Local Variable: s_age
 ### Class/Enum/Namespace/Struct/type Name
 * Data type/Enum type (used as data type): data_t/enum_e
 * Class/Struct (used as object): MyClass
