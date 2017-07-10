@@ -53,5 +53,5 @@ namespace TFT_ARCH {
     constexpr TURING_MACHINE::addressable_e ADDRESSABLE = TURING_MACHINE::addressable_e::word;
     constexpr TURING_MACHINE::endian_e ENDIAN = TURING_MACHINE::endian_e::little;
 
-    constexpr std::size_t MEMORY_DELAY_IN_CYCLE = 50;
+    constexpr std::size_t MEMORY_DELAY_IN_CYCLE = 10;
 }

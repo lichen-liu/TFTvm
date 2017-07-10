@@ -13,11 +13,19 @@
 
 #include <iostream>
 #include <limits>
+#include <vector>
 
 #include "engine.h"
+#include "TFT_ARCH.h"
 #include "TFT_ARCH_instr_exec_requirement.h"
+#include "TFT_ARCH_machine.h"
 #include "TURING_MACHINE.h"
 #include "word_t.h"
+
+
+namespace {
+    void l_runTFTMachine();
+}
 
 
 int main(int argc, char **argv)
@@ -47,27 +55,49 @@ int main(int argc, char **argv)
     //std::cout << "word=" << word.setValue(-12345) << std::endl;
     //std::cout << word.template getValue<int>() << std::endl;
 
-    TURING_MACHINE::word_t word(sizeof(unsigned int));
-    word.setValue(0x00000000u);
-    std::cout << "word=0x" << std::hex << word.template getValue<unsigned int>() << std::dec << std::endl;
-    std::cout << "word=0d" << word.template getValue<unsigned int>() << std::endl;
-    std::cout << word << std::endl;
-    std::cout << std::endl;
-    --word;
-    std::cout << std::endl;
-    std::cout << "word=0x" << std::hex << word.template getValue<unsigned int>() << std::dec << std::endl;
-    std::cout << "word=0d" << word.template getValue<unsigned int>() << std::endl;
-    std::cout << word << std::endl;
+    //TURING_MACHINE::word_t word(sizeof(unsigned int));
+    //word.setValue(0x00000000u);
+    //std::cout << "word=0x" << std::hex << word.template getValue<unsigned int>() << std::dec << std::endl;
+    //std::cout << "word=0d" << word.template getValue<unsigned int>() << std::endl;
+    //std::cout << word << std::endl;
+    //std::cout << std::endl;
+    //--word;
+    //std::cout << std::endl;
+    //std::cout << "word=0x" << std::hex << word.template getValue<unsigned int>() << std::dec << std::endl;
+    //std::cout << "word=0d" << word.template getValue<unsigned int>() << std::endl;
+    //std::cout << word << std::endl;
 
 
     //std::cout << "-1=0x" << std::hex << -1 << std::dec << std::endl;
     //std::cout << "-1u=0x" << std::hex << unsigned(-1) << std::dec << std::endl;
 
 
+    l_runTFTMachine();
+
+
     // Pause the console
-    std::cout << "Press ENTER to continue...";
+    std::cout << std::endl << std::endl;
+    std::cout << "*****************************" << std::endl;
+    std::cout << "*...Press <ENTER> to Exit...*" << std::endl;
+    std::cout << "*****************************" << std::endl;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 
     return EXIT_SUCCESS;
+}
+
+
+namespace {
+    void l_runTFTMachine()
+    {
+        constexpr std::size_t PROGRAM_SIZE = 3;
+
+        TFT_ARCH::Machine machine(PROGRAM_SIZE * TFT_ARCH::WORD_SIZE);
+        std::vector<TURING_MACHINE::word_t> program(PROGRAM_SIZE, TURING_MACHINE::word_t(TFT_ARCH::WORD_SIZE));
+        program[0].setValue(0x2800u); // mvi r2, 0xdead
+        program[1].setValue(0xdeadu);
+        program[2].setValue(0x4500u); // add r1, r2
+        machine.load(program, 0, TFT_ARCH::ADDRESSABLE, TFT_ARCH::ENDIAN);
+        machine.run(0);
+    }
 }

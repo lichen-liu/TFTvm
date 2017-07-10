@@ -49,6 +49,11 @@ namespace TFT_ARCH {
 
         ++publicRegisterContent(PUBLIC_REG_E::PC);
         std::size_t addr = getPrivateRegisterContent(PRIVATE_REG_E::ADDR).template getValue<std::size_t>();
+
+        if ((addr*getWordSizeInBytes()) >= getMemorySizeInBytes()) { // PC holds address greater than the memory size
+            return false;
+        }
+
         setPrivateRegisterContent(PRIVATE_REG_E::IR, readWord(addr, ADDRESSABLE, ENDIAN));
 
         return true;

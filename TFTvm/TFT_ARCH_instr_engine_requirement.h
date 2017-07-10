@@ -15,6 +15,7 @@ namespace TFT_ARCH {
     public:
         virtual ~InstrEngineRequirement() {}
 
+        virtual std::size_t getWordSizeInBytes()const = 0;
         virtual TURING_MACHINE::word_t& publicRegisterContent(std::size_t pos) = 0;
         virtual const TURING_MACHINE::word_t& publicRegisterContent(std::size_t pos)const = 0;
         virtual TURING_MACHINE::word_t& privateRegisterContent(std::size_t pos) = 0;

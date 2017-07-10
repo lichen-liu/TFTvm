@@ -12,6 +12,7 @@ namespace {
     NOOP_InstructionAction s_noopInstructionAction;
 }
 
+
 namespace TFT_ARCH {
 
     TFT_ARCH_InstructionAction * TFT_ARCH_InstructionAction::createInstructionAction(const TURING_MACHINE::word_t& instructionWord)
@@ -60,12 +61,11 @@ namespace TFT_ARCH {
     bool TFT_ARCH_InstructionAction::decodeInstructionWord(const TURING_MACHINE::word_t & instructionWord, std::size_t & iii, std::size_t & xxx, std::size_t & yyy)
     {
         std::size_t instruction = instructionWord.template getValue<std::size_t>();
-
         instruction >>= 7;
 
         yyy = instruction & 7; // 0b0 0000 0111
-        xxx = instruction & 56; // 0b0 0011 1000
-        iii = instruction & 448; // 0b1 1100 0000
+        xxx = (instruction & 56) >> 3; // 0b0 0011 1000
+        iii = (instruction & 448) >> 6; // 0b1 1100 0000
 
         return true;
     }

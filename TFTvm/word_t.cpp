@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <iterator>
 #include <limits>
+#include <sstream>
 
 
 namespace {
@@ -254,15 +255,18 @@ namespace TURING_MACHINE {
     }
 
     std::ostream& operator<<(std::ostream& os, const word_t& word) {
-        std::ios_base::fmtflags f(os.flags());// save the os flags
+        std::stringstream out;
 
-        os << "0x";
+        out << "0x";
+        out.fill('0');
+
         std::size_t n = word.size();
         for (std::size_t i = 0; i < n; i++) {
-            os << std::hex << std::nouppercase << std::setfill('0') << std::setw(2) << ((unsigned int)word[n - 1 - i]);
+            out << std::hex << std::nouppercase << std::setw(2) << ((unsigned int)word[n - 1 - i]);
         }
 
-        os.flags(f); // reset os flags
+        os << out.str();
+
         return os;
     }
 }
