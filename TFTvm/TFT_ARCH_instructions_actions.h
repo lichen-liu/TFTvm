@@ -5,7 +5,7 @@
 
 
 /*
-* These sets of InstructionAction model the executation behaviour of instructions on
+* These sets of InstructionAction model the execution behaviour of instructions on
 * the TFT Architecture.
 *
 * ACTION::InstructionAction<InstrStageRequirement<InstrEngineRequirement>> = 0

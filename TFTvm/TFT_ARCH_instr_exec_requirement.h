@@ -7,7 +7,7 @@
 
 /*
  * This abstract class defines the interface of architecture-specific
- * instruction executation requirement.
+ * instruction execution requirement.
  * This interface is for by TuringMachinePrototype~Engine only.
  *
  * InstrEngineRequirement = 0      InstrStageRequirement<InstrStageRequirement<InstrEngineRequirement>> = 0
@@ -21,7 +21,7 @@ namespace TFT_ARCH {
         public InstrEngineRequirement, public InstrStageRequirement<InstrStageRequirement<InstrEngineRequirement>>
     {
     public:
-        // Instruction executation stages
+        // Instruction execution stages
         virtual bool cycle0(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
         virtual bool cycle1(InstrStageRequirement<InstrEngineRequirement>& instruction) override;
         virtual bool cycle2(InstrStageRequirement<InstrEngineRequirement>& instruction) override;

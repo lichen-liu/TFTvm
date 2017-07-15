@@ -7,7 +7,7 @@
  * the Actionable~TuringMachinePrototype.
  *
  * template<typename StageRequirement> is an interface that defines the
- * instruction executation requirement according to a spcific architecture.
+ * instruction execution requirement according to a spcific architecture.
  *
  *  Action = 0
  *  |
@@ -25,7 +25,7 @@ namespace ACTION {
         virtual ~InstructionAction() {}
 
         /*
-         * Architecture-specific instruction executation requirement
+         * Architecture-specific instruction execution requirement
          * declared in template<typename StageRequirement>
          */
 

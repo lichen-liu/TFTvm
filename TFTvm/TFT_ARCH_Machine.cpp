@@ -85,7 +85,7 @@ namespace {
         char result = static_cast<char>(_getch());
         os << std::endl << std::endl;
 
-        return (result == 'c');
+        return (result != 'q');
     }
 }
 // ===================================================================================================================
@@ -113,44 +113,44 @@ namespace TFT_ARCH {
         programCounter.setValue(startingAddress);
         engine.setPublicRegisterContent(PUBLIC_REG_E::PC, programCounter);
 
-        bool executationSuccessful = true;
-        // Executation Loop
-        while (executationSuccessful) {
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle0(TFT_ARCH_InstructionAction::getNOOPInstructionAction());
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle1(TFT_ARCH_InstructionAction::getNOOPInstructionAction());
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle2(TFT_ARCH_InstructionAction::getNOOPInstructionAction());
+        bool executionSuccessful = true;
+        // Execution Loop
+        while (executionSuccessful) {
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle0(TFT_ARCH_InstructionAction::getNOOPInstructionAction());
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle1(TFT_ARCH_InstructionAction::getNOOPInstructionAction());
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle2(TFT_ARCH_InstructionAction::getNOOPInstructionAction());
 
             std::unique_ptr<TFT_ARCH_InstructionAction> instructionAction_ptr;
-            if (executationSuccessful) {
+            if (executionSuccessful) {
                 instructionAction_ptr.reset(TFT_ARCH_InstructionAction::createInstructionAction(engine.privateRegisterContent(PRIVATE_REG_E::IR)));
-                executationSuccessful &= static_cast<bool>(instructionAction_ptr);
+                executionSuccessful &= static_cast<bool>(instructionAction_ptr);
             }
 
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle3(*instructionAction_ptr);
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle4(*instructionAction_ptr);
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle5(*instructionAction_ptr);
-            if (executationSuccessful)
-                executationSuccessful &= engine.cycle6(*instructionAction_ptr);
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle3(*instructionAction_ptr);
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle4(*instructionAction_ptr);
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle5(*instructionAction_ptr);
+            if (executionSuccessful)
+                executionSuccessful &= engine.cycle6(*instructionAction_ptr);
 
 
             /*
              * For Debug Purpose
              */
-            if (!executationSuccessful) {
+            if (!executionSuccessful) {
                 std::cout << std::endl;
                 std::cout << "------------[HALTED] TFT_ARCH_MACHINE EXECUTION STOPPED ABNORMALLY!------------" << std::endl;
                 std::cout << std::endl;
             }
 
-            executationSuccessful &= l_dump_engine(engine, std::cout);
+            executionSuccessful &= l_dump_engine(engine, std::cout);
         }
 
-        return executationSuccessful;
+        return executionSuccessful;
     }
 }
