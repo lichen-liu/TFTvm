@@ -27,6 +27,12 @@
     <Filter Include="Source Files\TURING_MACHINE">
       <UniqueIdentifier>{d1611f78-72df-443f-b822-3745ab1158f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DRIVER">
+      <UniqueIdentifier>{5446c220-82e3-456e-8951-10fb0f1b2262}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DRIVER">
+      <UniqueIdentifier>{c369bc7f-5ead-47de-bd43-02f6e3994364}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TFT_ARCH.h">
@@ -74,6 +80,9 @@
     <ClInclude Include="TFT_ARCH_instr_engine_requirement.h">
       <Filter>Header Files\TFT_ARCH</Filter>
     </ClInclude>
+    <ClInclude Include="mif_parser.h">
+      <Filter>Header Files\DRIVER</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +126,9 @@
     </ClCompile>
     <ClCompile Include="TFT_ARCH_instr_engine_requirement.cpp">
       <Filter>Source Files\TFT_ARCH</Filter>
+    </ClCompile>
+    <ClCompile Include="mif_parser.cpp">
+      <Filter>Source Files\DRIVER</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
