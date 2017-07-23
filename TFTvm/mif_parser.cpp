@@ -1,9 +1,14 @@
 #include "mif_parser.h"
 
+#include <cassert>
+#include <fstream>
+#include <iostream>
+#include <regex>
 #include <string>
+#include <vector>
 
 
-namespace DRIVER {
+namespace PARSER {
     MIFParser::MIFParser()
     {
     }
@@ -13,8 +18,82 @@ namespace DRIVER {
     {
     }
 
+    bool MIFParser::load(const std::vector<std::string>& mifRaw)
+    {
+        std::vector<std::string> mifWithoutComment;
+        processComment(mifRaw, mifWithoutComment);
+
+        for (const std::string& line : mifWithoutComment)
+        {
+            std::cout << line << std::endl;
+        }
+
+        return false;
+    }
+
     bool MIFParser::load(const std::string & mifFile)
     {
+        std::ifstream fin;
+        fin.open(mifFile);
+
+        if (fin.is_open()) {
+            // Copy the content of the file stream
+            std::string line;
+            std::vector<std::string> mifRaw;
+            while (std::getline(fin, line)) {
+                mifRaw.push_back(std::move(line));
+            }
+            fin.close();
+
+            return load(mifRaw);
+        }
+
         return false;
+    }
+
+    /*
+     * This function removes all comments in the mif file
+     */
+    void MIFParser::processComment(const std::vector<std::string>& in, std::vector<std::string>& out)
+    {
+        /* Comments format:
+         * 1) (Multi-line) comment enclosed by percent "%" character
+         * 2) Single comment with double dash "--" characters.
+         */
+        assert(&in != &out);
+
+        bool inMultiLineComment = false;
+        for (const std::string& line : in) {
+            // Check the line one char at a time
+            std::string newLine;
+
+            char prev = '\n';
+            for (char c : line) {
+                if (c == '%') {
+                    // Multi-line comment sign
+                    // Flip the state
+                    inMultiLineComment = !inMultiLineComment;
+                }
+                else if (c == '-' && prev == '-') {
+                    // Single-line comment sign
+                    if (!inMultiLineComment) {
+                        // We skip the entire line if we see a single-line comment sign, also pop the previous '-' sign in newLine
+                        assert(newLine.back() == '-');
+                        newLine.pop_back();
+                        break;
+                    }
+                }
+                else {
+                    // Regular characters
+                    if (!inMultiLineComment) {
+                        // Not in comment
+                        // We append this character into newLine
+                        newLine += c;
+                        prev = c;
+                    }
+                }
+            }
+            out.push_back(std::move(newLine));
+        }
     }
 }

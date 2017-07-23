@@ -1,3 +1,7 @@
+// TFTvm_exe.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
 #define _CRTDBG_MAP_ALLOC  
 #include <stdlib.h>  
 #include <crtdbg.h>  
@@ -13,9 +17,11 @@
 
 #include <iostream>
 #include <limits>
+#include <string>
 #include <vector>
 
 #include "engine.h"
+#include "mif_parser.h"
 #include "TFT_ARCH.h"
 #include "TFT_ARCH_instr_exec_requirement.h"
 #include "TFT_ARCH_machine.h"
@@ -25,15 +31,13 @@
 
 namespace {
     void l_runTFTMachine();
+    void l_testMIfParser();
 }
 
 
-int main(int argc, char **argv)
+int main()
 {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
-    argc;/*Unused Reference*/
-    argv;/*Unused Reference*/
 
     //constexpr std::size_t MEMORY_SIZE = 1024 * 1024 * 128; // 128 MiB
     //TURING_MACHINE::Engine<TFT_ARCH::InstrExecRequirement> engine(2, 8, 3, MEMORY_SIZE);
@@ -71,8 +75,8 @@ int main(int argc, char **argv)
     //std::cout << "-1=0x" << std::hex << -1 << std::dec << std::endl;
     //std::cout << "-1u=0x" << std::hex << unsigned(-1) << std::dec << std::endl;
 
-
-    l_runTFTMachine();
+    l_testMIfParser();
+    //l_runTFTMachine();
 
 
     // Pause the console
@@ -99,5 +103,23 @@ namespace {
         program[2].setValue(0x4500u); // add r1, r2
         machine.load(program, 0, TFT_ARCH::ADDRESSABLE, TFT_ARCH::ENDIAN);
         machine.run(0);
+    }
+
+    void l_testMIfParser()
+    {
+        std::vector<std::string> mif;
+        std::string line;
+
+        std::cout << "Enter the MIF content, enter <EXIT> to complete." << std::endl;
+        while (true) {
+            std::getline(std::cin, line);
+            if (line == "EXIT") {
+                break;
+            }
+            mif.push_back(std::move(line));
+        }
+
+        PARSER::MIFParser mifp;
+        mifp.load(mif);
     }
 }

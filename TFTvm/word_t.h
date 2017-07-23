@@ -19,8 +19,8 @@ namespace TURING_MACHINE {
 
         word_t();
         /*
-         * Contruct a word with argument size.
-         * This should not be used as constructing a word with the argument value.
+         * Contruct a word with argument size (in byte).
+         * **The argument is not the value that this word is initialized to**
          */
         explicit word_t(std::size_t size);
         word_t(const word_t &object);

@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TFTvm", "TFTvm\TFTvm.vcxproj", "{8FEBCDEE-8E79-4B88-88EB-CD4EE2A267DD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TFTvm_exe", "TFTvm_exe\TFTvm_exe.vcxproj", "{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TFTvm_test", "TFTvm_test\TFTvm_test.vcxproj", "{8035BBB8-571E-4275-A517-D9A358450254}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,22 @@ Global
 		{8FEBCDEE-8E79-4B88-88EB-CD4EE2A267DD}.Release|x64.Build.0 = Release|x64
 		{8FEBCDEE-8E79-4B88-88EB-CD4EE2A267DD}.Release|x86.ActiveCfg = Release|Win32
 		{8FEBCDEE-8E79-4B88-88EB-CD4EE2A267DD}.Release|x86.Build.0 = Release|Win32
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Debug|x64.ActiveCfg = Debug|x64
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Debug|x64.Build.0 = Debug|x64
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Debug|x86.ActiveCfg = Debug|Win32
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Debug|x86.Build.0 = Debug|Win32
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Release|x64.ActiveCfg = Release|x64
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Release|x64.Build.0 = Release|x64
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Release|x86.ActiveCfg = Release|Win32
+		{D89981CC-C4A5-4599-9A5A-2F9C61E745C1}.Release|x86.Build.0 = Release|Win32
+		{8035BBB8-571E-4275-A517-D9A358450254}.Debug|x64.ActiveCfg = Debug|x64
+		{8035BBB8-571E-4275-A517-D9A358450254}.Debug|x64.Build.0 = Debug|x64
+		{8035BBB8-571E-4275-A517-D9A358450254}.Debug|x86.ActiveCfg = Debug|Win32
+		{8035BBB8-571E-4275-A517-D9A358450254}.Debug|x86.Build.0 = Debug|Win32
+		{8035BBB8-571E-4275-A517-D9A358450254}.Release|x64.ActiveCfg = Release|x64
+		{8035BBB8-571E-4275-A517-D9A358450254}.Release|x64.Build.0 = Release|x64
+		{8035BBB8-571E-4275-A517-D9A358450254}.Release|x86.ActiveCfg = Release|Win32
+		{8035BBB8-571E-4275-A517-D9A358450254}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
