@@ -20,6 +20,7 @@ Use Camel Case in general.
 * Namespace: TURING_MACHINE
 * Enum Enumerator With Implicit Primitive Type Value Conversion: ENUMERATOR_APPLE
 * Enum Enumerator Without Implicit Primitive Type Value Conversion: enumeratorApple
+* Unit Test TEST_CLASS: MIFParser_test
 ### File Name
 * namespace/class_a.(cpp/h/tpp)
 * Only the Namespace header file can have the same name as the namespace.
