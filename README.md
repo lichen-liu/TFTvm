@@ -3,6 +3,14 @@ An introductory exploration project to Instruction Set Architecture(ISA) simulat
 
 TFT stands for Three-Forty-Two(342), which refers to ECE342 - COMPUTER HARDWARE @ University of Toronto, a really deep pain in the ass. The architecture used in this project is a simple processor that is implemented in one of the labs in this course. 
 
+# Project Overview
+### TFTvm
+A static library project, the core.
+### TFTvm_exe
+A win32 console project, the driver.
+### TFTvm_test
+A Visual Studio 2017 native unit test project, the testing frame.
+
 # Coding Style
 Follow the style of the current codebase, but a few non-obvious convention will be introduced below.
 ## Names
