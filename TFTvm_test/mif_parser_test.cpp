@@ -107,8 +107,84 @@ namespace TFTvm_test
                 ""
             };
 
-            std::vector<std::string> result;
-            MIFParser::processComment(mif, result);
+            std::vector<std::string> result = MIFParser::processComment(mif);
+
+            Assert::IsTrue(expectedResult == result);
+        }
+
+        TEST_METHOD(processFormat)
+        {
+            std::vector<std::string> mif =
+            { "notcomment",
+                "",
+                "notcomment",
+                "notcomment",
+                "",
+                "",
+                "-notcomment",
+                "-0-0-0-0-0",
+                "- -notcomment",
+                "",
+                "",
+                "",
+                "-",
+                "",
+                "",
+                "notcomment",
+                "notcomment",
+                "notcomment",
+                "",
+                "",
+                "",
+                "notcomment",
+                "notcommentnotcomment",
+                "notcommentnotcomment",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "notcomment",
+                "notcomment",
+                "notcomment",
+                "notcommentnotcomment",
+                "",
+                "notcomment",
+                "notcomment",
+                "notcomment",
+                "notcomment",
+                "notcomment",
+                "notcomment",
+                ""
+            };
+
+            std::vector<std::string> expectedResult =
+            { "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "-NOTCOMMENT",
+                "-0-0-0-0-0",
+                "- -NOTCOMMENT",
+                "-",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENTNOTCOMMENT",
+                "NOTCOMMENTNOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENTNOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+                "NOTCOMMENT",
+            };
+
+            std::vector<std::string> result = MIFParser::processFormat(mif);
 
             Assert::IsTrue(expectedResult == result);
         }

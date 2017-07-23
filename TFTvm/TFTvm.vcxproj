@@ -127,6 +127,7 @@
     <ClInclude Include="engine.h" />
     <ClInclude Include="executable_action.h" />
     <ClInclude Include="mif_parser.h" />
+    <ClInclude Include="PARSER.h" />
     <ClInclude Include="TFT_ARCH_instr_engine_requirement.h" />
     <ClInclude Include="TFT_ARCH_instr_stage_requirement.h" />
     <ClInclude Include="TFT_ARCH_machine.h" />

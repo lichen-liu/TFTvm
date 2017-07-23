@@ -83,6 +83,9 @@
     <ClInclude Include="mif_parser.h">
       <Filter>Header Files\PARSER</Filter>
     </ClInclude>
+    <ClInclude Include="PARSER.h">
+      <Filter>Header Files\PARSER</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="word_t.cpp">

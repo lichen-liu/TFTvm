@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+#include "PARSER.h"
+
 
 namespace PARSER {
     class MIFParser
@@ -14,6 +16,16 @@ namespace PARSER {
         bool load(const std::string& mifFile);
 
 
-        static void processComment(const std::vector<std::string>& in, std::vector<std::string>& out);
+        struct  MIFProperty {
+            std::size_t depth;
+            std::size_t width;
+            radix_e address_radix;
+            radix_e data_radix;
+        };
+
+
+        static std::vector<std::string> processComment(const std::vector<std::string>& in);
+        static std::vector<std::string> processFormat(const std::vector<std::string>& in);
+        static MIFProperty parseProperty(const std::vector<std::string>& in);
     };
 }
