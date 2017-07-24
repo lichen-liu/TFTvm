@@ -22,12 +22,14 @@ namespace PARSER {
     bool MIFParser::load(const std::vector<std::string>& mifRaw)
     {
         std::vector<std::string> mifWithoutComment = processComment(mifRaw);
-        mifWithoutComment = processComment(mifWithoutComment);
+        mifWithoutComment = processFormat(mifWithoutComment);
 
         for (const std::string& line : mifWithoutComment)
         {
             std::cout << line << std::endl;
         }
+
+        MIFProperty mifProperty = parseProperty(mifWithoutComment);
 
         return false;
     }
@@ -103,18 +105,24 @@ namespace PARSER {
 
 
     /*
-     * This function removes empty lines in the mif file, and converts all characters to upper case.
+     * This function removes empty lines in the mif file, converts all characters to upper case, and
+     * removes any blank characters.
      */
     std::vector<std::string> MIFParser::processFormat(const std::vector<std::string>& in)
     {
         std::vector<std::string> out;
-        for (std::string line : in) {
-            if (!line.empty()) {
-                std::transform(line.begin(), line.end(), line.begin(),
-                    [](char c) -> char {
-                    return static_cast<char>(::toupper(static_cast<int>(c)));
+        for (const std::string& line : in) {
+            if ([](const std::string &s)-> bool { // Check whether line is completely empty or all blank characters
+                return std::any_of(s.begin(), s.end(), [](char c)->bool {return !::isblank(static_cast<int>(c)); });
+            }(line)) {
+                std::string newLine;
+                std::for_each(line.begin(), line.end(),
+                    [&newLine](char c) {
+                    if (!::isblank(static_cast<int>(c))) {
+                        newLine += static_cast<char>(::toupper(static_cast<int>(c)));
+                    }
                 });
-                out.push_back(line);
+                out.push_back(std::move(newLine));
             }
         }
         return out;
@@ -124,6 +132,9 @@ namespace PARSER {
     /*
      * This function parses the MIF property info from the mif file, and
      * returns the data via struct MIFProperty.
+     * This function should only be used after
+     * 1) processComment()
+     * 2) processFormat()
      */
     MIFParser::MIFProperty MIFParser::parseProperty(const std::vector<std::string>& in)
     {
@@ -131,12 +142,11 @@ namespace PARSER {
         std::size_t width = 0;
         radix_e addressRadix = radix_e::INVALID;
         radix_e dataRadix = radix_e::INVALID;
-        MIFProperty property = { depth,width,addressRadix,dataRadix };
 
-        //std::regex depthExp();
-        //std::regex widthExp();
-        //std::regex addressRadixExp();
-        //std::regex dataRadixExp();
+        std::regex depthExp("DEPTH=([0-9]+);", std::regex_constants::icase);
+        std::regex widthExp("WIDTH=([0-9]+);", std::regex_constants::icase);
+        std::regex addressRadixExp("ADDRESS_RADIX=([[:alpha:]]{3});", std::regex_constants::icase);
+        std::regex dataRadixExp("DATA_RADIX=([[:alpha:]]{3});", std::regex_constants::icase);
 
         bool depthFound = false;
         bool widthFound = false;
@@ -144,16 +154,58 @@ namespace PARSER {
         bool dataRadixFound = false;
 
         for (const std::string & line : in) {
+            std::cout << "Searching in {" << line << "}" << std::endl;
 
-
-            if (depthFound && widthFound && addressRadixFound && dataRadixFound) {
-                break;
-            }
+            std::smatch m;
             if (line.find("CONTENT") != std::string::npos) {
                 break;
             }
+            else if (std::regex_match(line, m, depthExp)) { // exact match
+                std::cout << "Result<DEPTH>=" << m[1] << std::endl;
+
+                // Flip the state
+                depthFound = !depthFound;
+                if (depthFound == false) {
+                    break;
+                }
+            }
+            else if (std::regex_match(line, m, widthExp)) { // exact match
+                std::cout << "Result<WIDTH>=" << m[1] << std::endl;
+
+                // Flip the state
+                widthFound = !widthFound;
+                if (widthFound == false) {
+                    break;
+                }
+            }
+            else if (std::regex_match(line, m, addressRadixExp)) { // exact match
+                std::cout << "Result<ADDRESS_RADIX>=" << m[1] << std::endl;
+
+                // Flip the state
+                addressRadixFound = !addressRadixFound;
+                if (addressRadixFound == false) {
+                    break;
+                }
+            }
+            else if (std::regex_match(line, m, dataRadixExp)) { // exact match
+                std::cout << "Result<DATA_RADIX>=" << m[1] << std::endl;
+
+                // Flip the state
+                dataRadixFound = !dataRadixFound;
+                if (dataRadixFound == false) {
+                    break;
+                }
+            }
         }
 
-        return property;
+        // If any of the field is not found (or invalid)
+        if (!(depthFound && widthFound && addressRadixFound && dataRadixFound)) {
+            depth = 0;
+            width = 0;
+            addressRadix = radix_e::INVALID;
+            dataRadix = radix_e::INVALID;
+        }
+
+        return MIFProperty{ depth,width,addressRadix,dataRadix };
     }
 }

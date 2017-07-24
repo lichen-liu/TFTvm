@@ -155,6 +155,12 @@ namespace TFTvm_test
                 "notcomment",
                 "notcomment",
                 "notcomment",
+                "",
+                "                    ",
+                "  ",
+                "    ",
+                "                        --",
+                "--"
                 ""
             };
 
@@ -164,7 +170,7 @@ namespace TFTvm_test
                 "NOTCOMMENT",
                 "-NOTCOMMENT",
                 "-0-0-0-0-0",
-                "- -NOTCOMMENT",
+                "--NOTCOMMENT",
                 "-",
                 "NOTCOMMENT",
                 "NOTCOMMENT",
@@ -182,6 +188,8 @@ namespace TFTvm_test
                 "NOTCOMMENT",
                 "NOTCOMMENT",
                 "NOTCOMMENT",
+                "--",
+                "--"
             };
 
             std::vector<std::string> result = MIFParser::processFormat(mif);
