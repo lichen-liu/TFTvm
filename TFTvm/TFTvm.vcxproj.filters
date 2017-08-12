@@ -130,5 +130,8 @@
     <ClCompile Include="mif_parser.cpp">
       <Filter>Source Files\PARSER</Filter>
     </ClCompile>
+    <ClCompile Include="PARSER.cpp">
+      <Filter>Source Files\PARSER</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

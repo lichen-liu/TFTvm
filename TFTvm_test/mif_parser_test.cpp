@@ -196,5 +196,12 @@ namespace TFTvm_test
 
             Assert::IsTrue(expectedResult == result);
         }
+
+        TEST_METHOD(processProperty)
+        {
+            std::vector<std::string> mif =
+            {
+            };
+        }
     };
 }

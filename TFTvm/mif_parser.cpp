@@ -6,6 +6,7 @@
 #include <iostream>
 #include <regex>
 #include <string>
+#include <sstream>
 #include <vector>
 
 
@@ -19,20 +20,41 @@ namespace PARSER {
     {
     }
 
+
     bool MIFParser::load(const std::vector<std::string>& mifRaw)
     {
+        // Process the comment
         std::vector<std::string> mifWithoutComment = processComment(mifRaw);
+        // Process the format
         mifWithoutComment = processFormat(mifWithoutComment);
 
+        std::cout << std::endl;
+        std::cout << "===MIF CONTENT AFTER PREPROCESSOR===" << std::endl;
         for (const std::string& line : mifWithoutComment)
         {
             std::cout << line << std::endl;
         }
+        std::cout << "***END MIF CONTENT AFTER PREPROCESSOR***" << std::endl;
+        std::cout << std::endl;
 
+        // Parse the property
         MIFProperty mifProperty = parseProperty(mifWithoutComment);
+
+        std::string enumString;
+        std::cout << std::endl;
+        std::cout << "===MIF PROPERTY===" << std::endl;
+        std::cout << "DEPTH = <" << mifProperty.depth << ">" << std::endl;
+        std::cout << "WIDTH = <" << mifProperty.width << ">" << std::endl;
+        mifProperty.address_radix >> enumString;
+        std::cout << "ADDRESS_RADIX = <" << enumString << ">" << std::endl;
+        mifProperty.data_radix >> enumString;
+        std::cout << "DATA_RADIX = <" << enumString << ">" << std::endl;
+        std::cout << "***END MIF PROPERTY***" << std::endl;
+        std::cout << std::endl;
 
         return false;
     }
+
 
     bool MIFParser::load(const std::string & mifFile)
     {
@@ -154,47 +176,59 @@ namespace PARSER {
         bool dataRadixFound = false;
 
         for (const std::string & line : in) {
-            std::cout << "Searching in {" << line << "}" << std::endl;
-
             std::smatch m;
+            // If find the "CONTENT", break the loop
             if (line.find("CONTENT") != std::string::npos) {
                 break;
             }
             else if (std::regex_match(line, m, depthExp)) { // exact match
-                std::cout << "Result<DEPTH>=" << m[1] << std::endl;
-
                 // Flip the state
                 depthFound = !depthFound;
                 if (depthFound == false) {
                     break;
                 }
+                else {
+                    std::stringstream ss;
+                    ss << m[1];
+                    ss >> depth;
+                }
             }
             else if (std::regex_match(line, m, widthExp)) { // exact match
-                std::cout << "Result<WIDTH>=" << m[1] << std::endl;
-
                 // Flip the state
                 widthFound = !widthFound;
                 if (widthFound == false) {
                     break;
                 }
+                else {
+                    std::stringstream ss;
+                    ss << m[1];
+                    ss >> width;
+                }
             }
             else if (std::regex_match(line, m, addressRadixExp)) { // exact match
-                std::cout << "Result<ADDRESS_RADIX>=" << m[1] << std::endl;
-
                 // Flip the state
                 addressRadixFound = !addressRadixFound;
                 if (addressRadixFound == false) {
                     break;
                 }
+                else {
+                    addressRadix << m[1];
+                }
             }
             else if (std::regex_match(line, m, dataRadixExp)) { // exact match
-                std::cout << "Result<DATA_RADIX>=" << m[1] << std::endl;
-
                 // Flip the state
                 dataRadixFound = !dataRadixFound;
                 if (dataRadixFound == false) {
                     break;
                 }
+                else {
+                    dataRadix << m[1];
+                }
+            }
+
+            // If all fields are found, break the loop
+            if (depthFound && widthFound && addressRadixFound && dataRadixFound) {
+                break;
             }
         }
 

@@ -152,6 +152,7 @@
     <ClCompile Include="executable_action.cpp" />
     <ClCompile Include="instruction_action.cpp" />
     <ClCompile Include="mif_parser.cpp" />
+    <ClCompile Include="PARSER.cpp" />
     <ClCompile Include="TFT_ARCH_instr_engine_requirement.cpp" />
     <ClCompile Include="TFT_ARCH_instr_stage_requirement.cpp" />
     <ClCompile Include="TFT_ARCH_machine.cpp" />

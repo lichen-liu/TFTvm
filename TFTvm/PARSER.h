@@ -1,4 +1,6 @@
 #pragma once
+#include <cassert>
+#include <string>
 
 
 namespace PARSER {
@@ -10,4 +12,7 @@ namespace PARSER {
         UNS, // unsigned decimal
         INVALID
     };
+
+    radix_e& operator << (radix_e& rad, const std::string &str);
+    radix_e& operator >> (radix_e& rad, std::string &str);
 }
